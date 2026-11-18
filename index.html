@@ -9,7 +9,12 @@
     content="Puriware adalah mitra strategis konsultasi dan implementasi solusi berbasis Teknologi Informasi dan Komunikasi (TIK) terpadu. One Stop IT Solutions." />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/logo/puriware_only_logo.png" />
+  <link rel="icon" type="image/png" href="assets/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Puriware" />
+  <link rel="manifest" href="assets/favicon/site.webmanifest" />
 
   <!-- Google Fonts: Plus Jakarta Sans (Headings) & Inter (Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -68,7 +73,11 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    h1, h2, h3, h4, .font-heading {
+    h1,
+    h2,
+    h3,
+    h4,
+    .font-heading {
       font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
@@ -79,6 +88,7 @@
         linear-gradient(to right, rgba(226, 232, 240, 0.55) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(226, 232, 240, 0.55) 1px, transparent 1px);
     }
+
     .dark .bg-architectural-grid {
       background-image:
         linear-gradient(to right, rgba(51, 65, 85, 0.28) 1px, transparent 1px),
@@ -91,6 +101,7 @@
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
     }
+
     .dark .navbar-glass {
       background: rgba(15, 23, 42, 0.88);
       backdrop-filter: blur(14px);
@@ -102,6 +113,7 @@
       background: linear-gradient(135deg, #2563EB 0%, #0284C7 100%);
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
+
     .btn-primary-gradient:hover {
       background: linear-gradient(135deg, #1D4ED8 0%, #0369A1 100%);
       transform: translateY(-1px);
@@ -112,6 +124,7 @@
     .modal-backdrop {
       transition: opacity 0.25s ease;
     }
+
     .modal-panel {
       transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
     }
@@ -143,7 +156,8 @@
           <a href="#beranda" data-i18n="nav.home"
             class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors">Beranda</a>
           <a href="#tentang-kami" data-i18n="nav.about"
-            class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors">Tentang Kami</a>
+            class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors">Tentang
+            Kami</a>
           <a href="#layanan" data-i18n="nav.services"
             class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors">Layanan</a>
           <a href="#metodologi" data-i18n="nav.methodology"
@@ -156,7 +170,9 @@
         <div class="flex items-center gap-2 sm:gap-3">
 
           <!-- Pemilih Bahasa (Language Switcher: ID | EN) -->
-          <div class="flex items-center p-0.5 rounded-xl bg-slate-100 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-xs font-semibold" role="group" aria-label="Pilihan Bahasa">
+          <div
+            class="flex items-center p-0.5 rounded-xl bg-slate-100 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-xs font-semibold"
+            role="group" aria-label="Pilihan Bahasa">
             <button type="button" id="lang-btn-id"
               class="px-2.5 py-1 rounded-lg transition-all duration-200 bg-white dark:bg-slate-700 text-blue-600 dark:text-cyan-400 shadow-xs font-bold"
               aria-label="Pilih Bahasa Indonesia">
@@ -174,13 +190,17 @@
             class="p-2 sm:p-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500/20"
             aria-label="Ganti Mode Gelap/Terang" title="Tema Gelap / Terang">
             <!-- Ikon Matahari (muncul di mode gelap untuk kembali ke terang) -->
-            <svg id="theme-icon-sun" class="w-4 h-4 sm:w-5 sm:h-5 hidden dark:block text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <svg id="theme-icon-sun" class="w-4 h-4 sm:w-5 sm:h-5 hidden dark:block text-amber-400" fill="none"
+              stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <circle cx="12" cy="12" r="4" fill="currentColor" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
             </svg>
             <!-- Ikon Bulan (muncul di mode terang untuk berganti ke gelap) -->
-            <svg id="theme-icon-moon" class="w-4 h-4 sm:w-5 sm:h-5 block dark:hidden text-slate-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+            <svg id="theme-icon-moon" class="w-4 h-4 sm:w-5 sm:h-5 block dark:hidden text-slate-700" fill="none"
+              stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
             </svg>
           </button>
 
@@ -208,12 +228,14 @@
     </div>
 
     <!-- Drawer Menu Navigasi Mobile -->
-    <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg">
+    <div id="mobile-menu"
+      class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg">
       <div class="px-4 pt-3 pb-5 space-y-2">
         <a href="#beranda" data-i18n="nav.home"
           class="mobile-nav-link block px-3.5 py-2.5 rounded-xl text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-cyan-400">Beranda</a>
         <a href="#tentang-kami" data-i18n="nav.about"
-          class="mobile-nav-link block px-3.5 py-2.5 rounded-xl text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-cyan-400">Tentang Kami</a>
+          class="mobile-nav-link block px-3.5 py-2.5 rounded-xl text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-cyan-400">Tentang
+          Kami</a>
         <a href="#layanan" data-i18n="nav.services"
           class="mobile-nav-link block px-3.5 py-2.5 rounded-xl text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-cyan-400">Layanan</a>
         <a href="#metodologi" data-i18n="nav.methodology"
@@ -234,7 +256,8 @@
     <!-- =====================================================================
          2. HERO SECTION
          ===================================================================== -->
-    <section id="beranda" class="relative overflow-hidden bg-white dark:bg-slate-950 bg-architectural-grid border-b border-slate-200/80 dark:border-slate-800/80">
+    <section id="beranda"
+      class="relative overflow-hidden bg-white dark:bg-slate-950 bg-architectural-grid border-b border-slate-200/80 dark:border-slate-800/80">
       <!-- Dekorasi Cahaya Radial Halus -->
       <div
         class="pointer-events-none absolute -top-24 right-0 w-[520px] h-[520px] rounded-full bg-gradient-to-br from-blue-100/60 dark:from-blue-900/20 via-cyan-50/40 dark:via-cyan-900/10 to-transparent blur-3xl">
@@ -256,18 +279,22 @@
                   class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600 dark:bg-cyan-400"></span>
               </span>
-              <span class="font-heading text-xs sm:text-sm font-bold tracking-wide" data-i18n="hero.badge">One Stop IT Solutions</span>
+              <span class="font-heading text-xs sm:text-sm font-bold tracking-wide" data-i18n="hero.badge">One Stop IT
+                Solutions</span>
             </div>
 
             <!-- Headline Utama -->
             <h1
               class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-[46px] text-slate-900 dark:text-white tracking-tight leading-[1.16]">
               <span data-i18n="hero.titlePrefix">Mitra Strategis Konsultasi &amp; Implementasi</span>
-              <span class="bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent" data-i18n="hero.titleHighlight">Solusi TIK Terpadu</span>
+              <span
+                class="bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent"
+                data-i18n="hero.titleHighlight">Solusi TIK Terpadu</span>
             </h1>
 
             <!-- Proposisi Nilai Ringkas -->
-            <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl" data-i18n="hero.desc">
+            <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl"
+              data-i18n="hero.desc">
               Puriware membantu perusahaan dan institusi merancang, mengintegrasikan, serta mengoptimalkan infrastruktur
               TIK dan ekosistem sistem digital secara menyeluruh—menghadirkan fondasi teknologi yang tangguh, aman, dan
               selaras dengan target pertumbuhan bisnis Anda.
@@ -291,16 +318,22 @@
             <!-- Pilar Kepercayaan Ringkas -->
             <div class="pt-4 border-t border-slate-200/80 dark:border-slate-800 grid grid-cols-3 gap-4 max-w-xl">
               <div>
-                <p class="font-heading font-bold text-sm sm:text-base text-slate-900 dark:text-white" data-i18n="hero.stat1Title">End-to-End</p>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" data-i18n="hero.stat1Desc">Perencanaan hingga operasi</p>
+                <p class="font-heading font-bold text-sm sm:text-base text-slate-900 dark:text-white"
+                  data-i18n="hero.stat1Title">End-to-End</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" data-i18n="hero.stat1Desc">Perencanaan
+                  hingga operasi</p>
               </div>
               <div>
-                <p class="font-heading font-bold text-sm sm:text-base text-slate-900 dark:text-white" data-i18n="hero.stat2Title">Arsitektur Terbuka</p>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" data-i18n="hero.stat2Desc">Skalalbel &amp; mudah terintegrasi</p>
+                <p class="font-heading font-bold text-sm sm:text-base text-slate-900 dark:text-white"
+                  data-i18n="hero.stat2Title">Arsitektur Terbuka</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" data-i18n="hero.stat2Desc">Skalalbel &amp;
+                  mudah terintegrasi</p>
               </div>
               <div>
-                <p class="font-heading font-bold text-sm sm:text-base text-slate-900 dark:text-white" data-i18n="hero.stat3Title">Standar Enterprise</p>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" data-i18n="hero.stat3Desc">Keamanan &amp; SLA terukur</p>
+                <p class="font-heading font-bold text-sm sm:text-base text-slate-900 dark:text-white"
+                  data-i18n="hero.stat3Title">Standar Enterprise</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" data-i18n="hero.stat3Desc">Keamanan &amp;
+                  SLA terukur</p>
               </div>
             </div>
           </div>
@@ -314,17 +347,21 @@
               </div>
 
               <!-- Kartu Utama Topologi Arsitektur Puriware (Desain Arsitektur Asli) -->
-              <div class="relative rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-elevated overflow-hidden">
+              <div
+                class="relative rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-elevated overflow-hidden">
                 <!-- Bar Header Kartu -->
-                <div class="px-5 py-3.5 bg-slate-900 dark:bg-slate-950 text-white flex items-center justify-between border-b border-slate-800">
+                <div
+                  class="px-5 py-3.5 bg-slate-900 dark:bg-slate-950 text-white flex items-center justify-between border-b border-slate-800">
                   <div class="flex items-center gap-2">
                     <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
-                    <span class="font-heading text-xs font-semibold tracking-wide text-slate-200" data-i18n="hero.hubHeader">
+                    <span class="font-heading text-xs font-semibold tracking-wide text-slate-200"
+                      data-i18n="hero.hubHeader">
                       PURIWARE ICT ARCHITECTURE HUB
                     </span>
                   </div>
                   <span
-                    class="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-blue-500/20 text-cyan-300 border border-cyan-400/30" data-i18n="hero.hubBadge">
+                    class="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-blue-500/20 text-cyan-300 border border-cyan-400/30"
+                    data-i18n="hero.hubBadge">
                     Terintegrasi
                   </span>
                 </div>
@@ -342,13 +379,16 @@
                     <path d="M325 166V182" stroke="#0F172A" class="dark:stroke-slate-400" stroke-width="2" />
 
                     <!-- Node Atas: Strategi & Tata Kelola TIK -->
-                    <rect x="115" y="14" width="190" height="42" rx="10" fill="#FFFFFF" class="dark:fill-slate-800" stroke="#CBD5E1" class="dark:stroke-slate-700"
+                    <rect x="115" y="14" width="190" height="42" rx="10" fill="#FFFFFF" class="dark:fill-slate-800"
+                      stroke="#CBD5E1" class="dark:stroke-slate-700" stroke-width="1.5" />
+                    <circle cx="137" cy="35" r="7" fill="#EFF6FF" class="dark:fill-slate-700" stroke="#2563EB"
                       stroke-width="1.5" />
-                    <circle cx="137" cy="35" r="7" fill="#EFF6FF" class="dark:fill-slate-700" stroke="#2563EB" stroke-width="1.5" />
                     <circle cx="137" cy="35" r="2.5" fill="#2563EB" />
-                    <text x="154" y="33" fill="#0F172A" class="dark:fill-white" font-family="'Plus Jakarta Sans', sans-serif" font-size="11"
-                      font-weight="700" data-i18n="hero.hubNode1Title">Strategi &amp; Arsitektur TIK</text>
-                    <text x="154" y="46" fill="#64748B" class="dark:fill-slate-400" font-family="'Inter', sans-serif" font-size="9.5" data-i18n="hero.hubNode1Sub">IT Blueprint &amp; Governance</text>
+                    <text x="154" y="33" fill="#0F172A" class="dark:fill-white"
+                      font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700"
+                      data-i18n="hero.hubNode1Title">Strategi &amp; Arsitektur TIK</text>
+                    <text x="154" y="46" fill="#64748B" class="dark:fill-slate-400" font-family="'Inter', sans-serif"
+                      font-size="9.5" data-i18n="hero.hubNode1Sub">IT Blueprint &amp; Governance</text>
 
                     <!-- Node Inti Tengah: Puriware Integration Core -->
                     <rect x="85" y="95" width="250" height="44" rx="12" fill="url(#coreGrad)" />
@@ -357,32 +397,36 @@
                       stroke-linejoin="round" />
                     <text x="128" y="115" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5"
                       font-weight="700">Puriware One-Stop Integration Core</text>
-                    <text x="128" y="128" fill="#BAE6FD" font-family="'Inter', sans-serif" font-size="9.5" data-i18n="hero.hubCoreSub">Orkestrasi Sistem, Cloud &amp; Keamanan</text>
+                    <text x="128" y="128" fill="#BAE6FD" font-family="'Inter', sans-serif" font-size="9.5"
+                      data-i18n="hero.hubCoreSub">Orkestrasi Sistem, Cloud &amp; Keamanan</text>
 
                     <!-- 3 Node Lapisan Implementasi Bawah -->
                     <!-- Node 1: Cloud & Infra -->
-                    <rect x="35" y="182" width="120" height="40" rx="9" fill="#FFFFFF" class="dark:fill-slate-800" stroke="#E2E8F0" class="dark:stroke-slate-700"
-                      stroke-width="1.5" />
-                    <text x="95" y="200" text-anchor="middle" fill="#0F172A" class="dark:fill-white" font-family="'Plus Jakarta Sans', sans-serif"
-                      font-size="10" font-weight="700" data-i18n="hero.hubNode2Title">Cloud &amp; Jaringan</text>
-                    <text x="95" y="213" text-anchor="middle" fill="#2563EB" class="dark:fill-cyan-400" font-family="'Inter', sans-serif"
-                      font-size="9" font-weight="500">High Availability</text>
+                    <rect x="35" y="182" width="120" height="40" rx="9" fill="#FFFFFF" class="dark:fill-slate-800"
+                      stroke="#E2E8F0" class="dark:stroke-slate-700" stroke-width="1.5" />
+                    <text x="95" y="200" text-anchor="middle" fill="#0F172A" class="dark:fill-white"
+                      font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700"
+                      data-i18n="hero.hubNode2Title">Cloud &amp; Jaringan</text>
+                    <text x="95" y="213" text-anchor="middle" fill="#2563EB" class="dark:fill-cyan-400"
+                      font-family="'Inter', sans-serif" font-size="9" font-weight="500">High Availability</text>
 
                     <!-- Node 2: Sistem Enterprise -->
-                    <rect x="165" y="182" width="90" height="40" rx="9" fill="#FFFFFF" class="dark:fill-slate-800" stroke="#E2E8F0" class="dark:stroke-slate-700"
-                      stroke-width="1.5" />
+                    <rect x="165" y="182" width="90" height="40" rx="9" fill="#FFFFFF" class="dark:fill-slate-800"
+                      stroke="#E2E8F0" class="dark:stroke-slate-700" stroke-width="1.5" />
                     <text x="210" y="200" text-anchor="middle" fill="#0F172A" class="dark:fill-white"
-                      font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" data-i18n="hero.hubNode3Title">Aplikasi &amp; API</text>
-                    <text x="210" y="213" text-anchor="middle" fill="#0284C7" class="dark:fill-cyan-400" font-family="'Inter', sans-serif"
-                      font-size="9" font-weight="500">Seamless Sync</text>
+                      font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700"
+                      data-i18n="hero.hubNode3Title">Aplikasi &amp; API</text>
+                    <text x="210" y="213" text-anchor="middle" fill="#0284C7" class="dark:fill-cyan-400"
+                      font-family="'Inter', sans-serif" font-size="9" font-weight="500">Seamless Sync</text>
 
                     <!-- Node 3: Cyber Security -->
-                    <rect x="265" y="182" width="120" height="40" rx="9" fill="#FFFFFF" class="dark:fill-slate-800" stroke="#E2E8F0" class="dark:stroke-slate-700"
-                      stroke-width="1.5" />
+                    <rect x="265" y="182" width="120" height="40" rx="9" fill="#FFFFFF" class="dark:fill-slate-800"
+                      stroke="#E2E8F0" class="dark:stroke-slate-700" stroke-width="1.5" />
                     <text x="325" y="200" text-anchor="middle" fill="#0F172A" class="dark:fill-white"
-                      font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" data-i18n="hero.hubNode4Title">Keamanan Siber</text>
-                    <text x="325" y="213" text-anchor="middle" fill="#0F172A" class="dark:fill-emerald-400" font-family="'Inter', sans-serif"
-                      font-size="9" font-weight="500">Zero-Trust Ready</text>
+                      font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700"
+                      data-i18n="hero.hubNode4Title">Keamanan Siber</text>
+                    <text x="325" y="213" text-anchor="middle" fill="#0F172A" class="dark:fill-emerald-400"
+                      font-family="'Inter', sans-serif" font-size="9" font-weight="500">Zero-Trust Ready</text>
 
                     <defs>
                       <linearGradient id="coreGrad" x1="85" y1="95" x2="335" y2="139" gradientUnits="userSpaceOnUse">
@@ -395,13 +439,19 @@
 
                   <!-- Bar Ringkasan Kapabilitas di Bawah Diagram (Desain Asli) -->
                   <div class="mt-4 pt-4 border-t border-slate-200/80 dark:border-slate-800 grid grid-cols-2 gap-3">
-                    <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/70 dark:border-slate-700/80">
-                      <span class="text-[11px] font-medium text-slate-500 dark:text-slate-400 block" data-i18n="hero.cap1Label">Pendekatan Konsultasi</span>
-                      <span class="font-heading font-bold text-sm text-slate-900 dark:text-white mt-0.5 block" data-i18n="hero.cap1Val">Vendor-Neutral &amp; Terukur</span>
+                    <div
+                      class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/70 dark:border-slate-700/80">
+                      <span class="text-[11px] font-medium text-slate-500 dark:text-slate-400 block"
+                        data-i18n="hero.cap1Label">Pendekatan Konsultasi</span>
+                      <span class="font-heading font-bold text-sm text-slate-900 dark:text-white mt-0.5 block"
+                        data-i18n="hero.cap1Val">Vendor-Neutral &amp; Terukur</span>
                     </div>
-                    <div class="p-3 rounded-xl bg-blue-50/60 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-900/60">
-                      <span class="text-[11px] font-medium text-blue-700 dark:text-cyan-400 block" data-i18n="hero.cap2Label">Siklus Layanan</span>
-                      <span class="font-heading font-bold text-sm text-slate-900 dark:text-white mt-0.5 block" data-i18n="hero.cap2Val">Asesmen hingga Managed</span>
+                    <div
+                      class="p-3 rounded-xl bg-blue-50/60 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-900/60">
+                      <span class="text-[11px] font-medium text-blue-700 dark:text-cyan-400 block"
+                        data-i18n="hero.cap2Label">Siklus Layanan</span>
+                      <span class="font-heading font-bold text-sm text-slate-900 dark:text-white mt-0.5 block"
+                        data-i18n="hero.cap2Val">Asesmen hingga Managed</span>
                     </div>
                   </div>
                 </div>
@@ -416,22 +466,27 @@
     <!-- =====================================================================
          3. TENTANG KAMI (ABOUT US)
          ===================================================================== -->
-    <section id="tentang-kami" class="py-20 sm:py-24 bg-alabaster dark:bg-slate-900/60 border-b border-slate-200/80 dark:border-slate-800/80 scroll-mt-20">
+    <section id="tentang-kami"
+      class="py-20 sm:py-24 bg-alabaster dark:bg-slate-900/60 border-b border-slate-200/80 dark:border-slate-800/80 scroll-mt-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- Header & Narasi Korporat -->
         <div class="max-w-3xl">
-          <span class="inline-block text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-cyan-400 mb-3" data-i18n="about.badge">
+          <span class="inline-block text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-cyan-400 mb-3"
+            data-i18n="about.badge">
             Tentang Puriware
           </span>
           <h2
-            class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 dark:text-white tracking-tight leading-tight" data-i18n="about.title">
+            class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 dark:text-white tracking-tight leading-tight"
+            data-i18n="about.title">
             Menjembatani Strategi Bisnis dengan Eksekusi Teknologi yang Presisi
           </h2>
-          <p class="mt-5 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="about.desc">
+          <p class="mt-5 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed"
+            data-i18n="about.desc">
             Sebagai perusahaan konsultasi dan implementasi solusi berbasis TIK, <strong
               class="font-semibold text-slate-900 dark:text-white">Puriware</strong> hadir dengan filosofi <em
-              class="not-italic font-medium text-blue-700 dark:text-cyan-400">One Stop IT Solutions</em>. Kami memahami bahwa investasi
+              class="not-italic font-medium text-blue-700 dark:text-cyan-400">One Stop IT Solutions</em>. Kami memahami
+            bahwa investasi
             teknologi hanya memberikan nilai optimal apabila dirancang secara menyeluruh, terintegrasi antar-lini, dan
             diimplementasikan dengan tata kelola yang disiplin.
           </p>
@@ -504,16 +559,20 @@
     <!-- =====================================================================
          4. LAYANAN UTAMA (INTERACTIVE 6-CARD GRID + MODAL DETAIL)
          ===================================================================== -->
-    <section id="layanan" class="py-20 sm:py-24 bg-white dark:bg-slate-950 border-b border-slate-200/80 dark:border-slate-800/80 scroll-mt-20">
+    <section id="layanan"
+      class="py-20 sm:py-24 bg-white dark:bg-slate-950 border-b border-slate-200/80 dark:border-slate-800/80 scroll-mt-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- Header Section -->
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div class="max-w-2xl">
-            <span class="inline-block text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-cyan-400 mb-3" data-i18n="services.badge">
+            <span class="inline-block text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-cyan-400 mb-3"
+              data-i18n="services.badge">
               Layanan Utama
             </span>
-            <h2 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 dark:text-white tracking-tight" data-i18n="services.title">
+            <h2
+              class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 dark:text-white tracking-tight"
+              data-i18n="services.title">
               Portofolio Konsultasi &amp; Implementasi TIK
             </h2>
             <p class="mt-3.5 text-base text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="services.desc">
@@ -522,8 +581,10 @@
             </p>
           </div>
           <div
-            class="text-xs font-medium text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-4 py-2.5 rounded-xl self-start md:self-auto" data-i18n="services.helperNote">
-            Klik <span class="text-blue-600 dark:text-cyan-400 font-semibold">"Detail Layanan"</span> pada kartu untuk rincian cakupan
+            class="text-xs font-medium text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-4 py-2.5 rounded-xl self-start md:self-auto"
+            data-i18n="services.helperNote">
+            Klik <span class="text-blue-600 dark:text-cyan-400 font-semibold">"Detail Layanan"</span> pada kartu untuk
+            rincian cakupan
           </div>
         </div>
 
@@ -538,15 +599,19 @@
     <!-- =====================================================================
          5. METODOLOGI KERJA (4-STEP HORIZONTAL TIMELINE)
          ===================================================================== -->
-    <section id="metodologi" class="py-20 sm:py-24 bg-alabaster dark:bg-slate-900/60 border-b border-slate-200/80 dark:border-slate-800/80 scroll-mt-20">
+    <section id="metodologi"
+      class="py-20 sm:py-24 bg-alabaster dark:bg-slate-900/60 border-b border-slate-200/80 dark:border-slate-800/80 scroll-mt-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- Header Section -->
         <div class="text-center max-w-2xl mx-auto mb-14">
-          <span class="inline-block text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-cyan-400 mb-3" data-i18n="methodology.badge">
+          <span class="inline-block text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-cyan-400 mb-3"
+            data-i18n="methodology.badge">
             Metodologi Kerja
           </span>
-          <h2 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 dark:text-white tracking-tight" data-i18n="methodology.title">
+          <h2
+            class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 dark:text-white tracking-tight"
+            data-i18n="methodology.title">
             Alur Konsultasi Terstruktur &amp; Terkendali
           </h2>
           <p class="mt-3.5 text-base text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="methodology.desc">
@@ -572,14 +637,18 @@
                   class="w-11 h-11 rounded-xl bg-slate-900 dark:bg-slate-800 text-white font-heading font-bold text-sm flex items-center justify-center shadow-xs relative z-10 border border-slate-700">
                   01
                 </span>
-                <span class="text-xs font-semibold text-blue-600 dark:text-cyan-400 bg-blue-50 dark:bg-blue-950/80 px-2.5 py-1 rounded-full" data-i18n="methodology.step1Badge">
+                <span
+                  class="text-xs font-semibold text-blue-600 dark:text-cyan-400 bg-blue-50 dark:bg-blue-950/80 px-2.5 py-1 rounded-full"
+                  data-i18n="methodology.step1Badge">
                   Tahap Awal
                 </span>
               </div>
-              <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white" data-i18n="methodology.step1Title">
+              <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white"
+                data-i18n="methodology.step1Title">
                 Asesmen &amp; Analisis
               </h3>
-              <p class="mt-2.5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="methodology.step1Desc">
+              <p class="mt-2.5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed"
+                data-i18n="methodology.step1Desc">
                 Audit menyeluruh atas infrastruktur eksisting, alur proses bisnis, tingkat kematangan digital, serta
                 pemetaan kebutuhan strategis pemangku kepentingan.
               </p>
@@ -593,14 +662,18 @@
                   class="w-11 h-11 rounded-xl bg-blue-600 text-white font-heading font-bold text-sm flex items-center justify-center shadow-xs relative z-10">
                   02
                 </span>
-                <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-full" data-i18n="methodology.step2Badge">
+                <span
+                  class="text-xs font-semibold text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-full"
+                  data-i18n="methodology.step2Badge">
                   Cetak Biru
                 </span>
               </div>
-              <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white" data-i18n="methodology.step2Title">
+              <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white"
+                data-i18n="methodology.step2Title">
                 Perancangan Solusi
               </h3>
-              <p class="mt-2.5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="methodology.step2Desc">
+              <p class="mt-2.5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed"
+                data-i18n="methodology.step2Desc">
                 Penyusunan arsitektur teknis terperinci, spesifikasi platform optimal, perencanaan keamanan, estimasi
                 sumber daya, dan strategi mitigasi risiko.
               </p>
@@ -614,14 +687,18 @@
                   class="w-11 h-11 rounded-xl bg-cyan-600 text-white font-heading font-bold text-sm flex items-center justify-center shadow-xs relative z-10">
                   03
                 </span>
-                <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-full" data-i18n="methodology.step3Badge">
+                <span
+                  class="text-xs font-semibold text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-full"
+                  data-i18n="methodology.step3Badge">
                   Eksekusi
                 </span>
               </div>
-              <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white" data-i18n="methodology.step3Title">
+              <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white"
+                data-i18n="methodology.step3Title">
                 Implementasi &amp; Migrasi
               </h3>
-              <p class="mt-2.5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="methodology.step3Desc">
+              <p class="mt-2.5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed"
+                data-i18n="methodology.step3Desc">
                 Instalasi infrastruktur, pengembangan sistem, integrasi API lintas aplikasi, serta migrasi data secara
                 terstruktur dengan downtime minimal.
               </p>
@@ -635,14 +712,18 @@
                   class="w-11 h-11 rounded-xl bg-slate-900 dark:bg-slate-800 text-white font-heading font-bold text-sm flex items-center justify-center shadow-xs relative z-10 border border-slate-700">
                   04
                 </span>
-                <span class="text-xs font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/80 px-2.5 py-1 rounded-full" data-i18n="methodology.step4Badge">
+                <span
+                  class="text-xs font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/80 px-2.5 py-1 rounded-full"
+                  data-i18n="methodology.step4Badge">
                   Optimalisasi
                 </span>
               </div>
-              <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white" data-i18n="methodology.step4Title">
+              <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white"
+                data-i18n="methodology.step4Title">
                 Evaluasi &amp; Pendampingan
               </h3>
-              <p class="mt-2.5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="methodology.step4Desc">
+              <p class="mt-2.5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed"
+                data-i18n="methodology.step4Desc">
                 Pengujian kualitas (UAT &amp; Security Testing), pelatihan tim internal, serah terima dokumentasi
                 lengkap, serta dukungan operasional berkelanjutan.
               </p>
@@ -664,11 +745,14 @@
           <!-- Kolom Kiri: Informasi Kontak & Nilai Konsultasi -->
           <div class="lg:col-span-5 space-y-8">
             <div>
-              <span class="inline-block text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-cyan-400 mb-3" data-i18n="contact.badge">
+              <span
+                class="inline-block text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-cyan-400 mb-3"
+                data-i18n="contact.badge">
                 Kontak &amp; Konsultasi
               </span>
               <h2
-                class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 dark:text-white tracking-tight leading-tight" data-i18n="contact.title">
+                class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 dark:text-white tracking-tight leading-tight"
+                data-i18n="contact.title">
                 Diskusikan Kebutuhan Solusi TIK Anda
               </h2>
               <p class="mt-4 text-base text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="contact.desc">
@@ -680,7 +764,8 @@
             <!-- Kartu Informasi Kontak Korporat -->
             <div class="space-y-4">
               <!-- Alamat -->
-              <div class="flex items-start gap-4 p-4 rounded-2xl bg-alabaster dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800">
+              <div
+                class="flex items-start gap-4 p-4 rounded-2xl bg-alabaster dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800">
                 <div
                   class="w-10 h-10 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-blue-600 dark:text-cyan-400 shrink-0">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
@@ -690,7 +775,8 @@
                   </svg>
                 </div>
                 <div>
-                  <h3 class="font-heading font-bold text-sm text-slate-900 dark:text-white" data-i18n="contact.hqTitle">Kantor Pusat</h3>
+                  <h3 class="font-heading font-bold text-sm text-slate-900 dark:text-white" data-i18n="contact.hqTitle">
+                    Kantor Pusat</h3>
                   <p class="text-sm text-slate-600 dark:text-slate-300 mt-1 leading-relaxed">
                     Jl. Diponegoro Gg. VII No.11, Dauh Puri, Kec. Denpasar Bar., Kota Denpasar, Bali, Indonesia - 80112
                   </p>
@@ -698,7 +784,8 @@
               </div>
 
               <!-- Email Bisnis -->
-              <div class="flex items-start gap-4 p-4 rounded-2xl bg-alabaster dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800">
+              <div
+                class="flex items-start gap-4 p-4 rounded-2xl bg-alabaster dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800">
                 <div
                   class="w-10 h-10 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-blue-600 dark:text-cyan-400 shrink-0">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
@@ -707,14 +794,17 @@
                   </svg>
                 </div>
                 <div>
-                  <h3 class="font-heading font-bold text-sm text-slate-900 dark:text-white" data-i18n="contact.emailTitle">Email Konsultasi</h3>
-                  <a href="mailto:info@puriware.com" class="text-sm text-blue-600 dark:text-cyan-400 hover:underline mt-1 inline-block font-medium">info@puriware.com</a>
+                  <h3 class="font-heading font-bold text-sm text-slate-900 dark:text-white"
+                    data-i18n="contact.emailTitle">Email Konsultasi</h3>
+                  <a href="mailto:info@puriware.com"
+                    class="text-sm text-blue-600 dark:text-cyan-400 hover:underline mt-1 inline-block font-medium">info@puriware.com</a>
                 </div>
               </div>
 
               <!-- Telepon & Jam Operasional -->
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-alabaster dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800">
+                <div
+                  class="flex items-start gap-3.5 p-4 rounded-2xl bg-alabaster dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800">
                   <div
                     class="w-9 h-9 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-blue-600 dark:text-cyan-400 shrink-0">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
@@ -723,12 +813,15 @@
                     </svg>
                   </div>
                   <div>
-                    <h3 class="font-heading font-bold text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400" data-i18n="contact.phoneTitle">Telepon</h3>
+                    <h3
+                      class="font-heading font-bold text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400"
+                      data-i18n="contact.phoneTitle">Telepon</h3>
                     <p class="text-sm font-medium text-slate-900 dark:text-white mt-0.5">+62 851 2138 3797</p>
                   </div>
                 </div>
 
-                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-alabaster dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800">
+                <div
+                  class="flex items-start gap-3.5 p-4 rounded-2xl bg-alabaster dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800">
                   <div
                     class="w-9 h-9 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-cyan-700 dark:text-cyan-400 shrink-0">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
@@ -737,8 +830,11 @@
                     </svg>
                   </div>
                   <div>
-                    <h3 class="font-heading font-bold text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400" data-i18n="contact.hoursTitle">Jam Layanan</h3>
-                    <p class="text-sm font-medium text-slate-900 dark:text-white mt-0.5" data-i18n="contact.hoursVal">Sen–Jum, 08.30–17.30</p>
+                    <h3
+                      class="font-heading font-bold text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400"
+                      data-i18n="contact.hoursTitle">Jam Layanan</h3>
+                    <p class="text-sm font-medium text-slate-900 dark:text-white mt-0.5" data-i18n="contact.hoursVal">
+                      Sen–Jum, 08.30–17.30</p>
                   </div>
                 </div>
               </div>
@@ -747,12 +843,15 @@
 
           <!-- Kolom Kanan: Formulir Permintaan Konsultasi Interaktif -->
           <div class="lg:col-span-7">
-            <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-elevated p-6 sm:p-9">
+            <div
+              class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-elevated p-6 sm:p-9">
 
               <!-- Form Input -->
-              <form id="consultation-form" action="https://formsubmit.co/info@puriware.com" method="POST" class="space-y-5" novalidate>
+              <form id="consultation-form" action="https://formsubmit.co/info@puriware.com" method="POST"
+                class="space-y-5" novalidate>
                 <div class="border-b border-slate-100 dark:border-slate-800 pb-4">
-                  <h3 class="font-heading font-bold text-xl text-slate-900 dark:text-white" data-i18n="contact.formTitle">
+                  <h3 class="font-heading font-bold text-xl text-slate-900 dark:text-white"
+                    data-i18n="contact.formTitle">
                     Formulir Permintaan Konsultasi
                   </h3>
                   <p class="text-sm text-slate-500 dark:text-slate-400 mt-1" data-i18n="contact.formDesc">
@@ -764,7 +863,8 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label for="fullName" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
-                      <span data-i18n="contact.nameLabel">Nama Lengkap</span> <span class="text-blue-600 dark:text-cyan-400">*</span>
+                      <span data-i18n="contact.nameLabel">Nama Lengkap</span> <span
+                        class="text-blue-600 dark:text-cyan-400">*</span>
                     </label>
                     <input type="text" id="fullName" name="fullName" required placeholder="Contoh: Budi Santoso"
                       data-i18n-placeholder="contact.namePlaceholder"
@@ -772,8 +872,10 @@
                   </div>
 
                   <div>
-                    <label for="companyName" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
-                      <span data-i18n="contact.companyLabel">Nama Perusahaan</span> <span class="text-blue-600 dark:text-cyan-400">*</span>
+                    <label for="companyName"
+                      class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <span data-i18n="contact.companyLabel">Nama Perusahaan</span> <span
+                        class="text-blue-600 dark:text-cyan-400">*</span>
                     </label>
                     <input type="text" id="companyName" name="companyName" required
                       placeholder="Contoh: PT Nusantara Digital" data-i18n-placeholder="contact.companyPlaceholder"
@@ -784,8 +886,10 @@
                 <!-- Baris 2: Email Bisnis & Pilihan Layanan -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label for="businessEmail" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
-                      <span data-i18n="contact.emailLabel">Email Bisnis</span> <span class="text-blue-600 dark:text-cyan-400">*</span>
+                    <label for="businessEmail"
+                      class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <span data-i18n="contact.emailLabel">Email Bisnis</span> <span
+                        class="text-blue-600 dark:text-cyan-400">*</span>
                     </label>
                     <input type="email" id="businessEmail" name="businessEmail" required
                       placeholder="nama@perusahaan.co.id" data-i18n-placeholder="contact.emailPlaceholder"
@@ -793,8 +897,10 @@
                   </div>
 
                   <div>
-                    <label for="serviceSelect" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
-                      <span data-i18n="contact.serviceLabel">Pilihan Layanan</span> <span class="text-blue-600 dark:text-cyan-400">*</span>
+                    <label for="serviceSelect"
+                      class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <span data-i18n="contact.serviceLabel">Pilihan Layanan</span> <span
+                        class="text-blue-600 dark:text-cyan-400">*</span>
                     </label>
                     <select id="serviceSelect" name="serviceSelect" required
                       class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-950 text-slate-900 dark:text-white text-sm focus:bg-white dark:focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500/25 dark:focus:ring-cyan-500/25 focus:border-blue-600 dark:focus:border-cyan-400 transition-all">
@@ -805,8 +911,10 @@
 
                 <!-- Baris 3: Deskripsi Kebutuhan -->
                 <div>
-                  <label for="projectDescription" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
-                    <span data-i18n="contact.descLabel">Deskripsi Kebutuhan</span> <span class="text-blue-600 dark:text-cyan-400">*</span>
+                  <label for="projectDescription"
+                    class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                    <span data-i18n="contact.descLabel">Deskripsi Kebutuhan</span> <span
+                      class="text-blue-600 dark:text-cyan-400">*</span>
                   </label>
                   <textarea id="projectDescription" name="projectDescription" rows="4" required
                     placeholder="Ceritakan secara singkat tantangan teknis, ruang lingkup proyek, atau target waktu implementasi yang Anda harapkan..."
@@ -851,18 +959,22 @@
                     class="inline-block px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-cyan-400 font-heading text-xs font-bold">
                     ID Referensi: PW-2026-8412
                   </span>
-                  <h3 class="font-heading font-bold text-2xl text-slate-900 dark:text-white" data-i18n="contact.successTitle">
+                  <h3 class="font-heading font-bold text-2xl text-slate-900 dark:text-white"
+                    data-i18n="contact.successTitle">
                     Permintaan Konsultasi Terkirim
                   </h3>
                   <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed" id="success-message-text">
-                    Terima kasih, <strong id="confirm-name" class="text-slate-900 dark:text-white">Bapak/Ibu</strong> dari <strong
-                      id="confirm-company" class="text-slate-900 dark:text-white">Perusahaan</strong>. Tim konsultan Puriware telah
+                    Terima kasih, <strong id="confirm-name" class="text-slate-900 dark:text-white">Bapak/Ibu</strong>
+                    dari <strong id="confirm-company" class="text-slate-900 dark:text-white">Perusahaan</strong>. Tim
+                    konsultan Puriware telah
                     menerima rincian kebutuhan Anda untuk layanan <span id="confirm-service"
                       class="text-blue-600 dark:text-cyan-400 font-medium">Konsultasi TIK</span>.
                   </p>
                 </div>
 
-                <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 max-w-md mx-auto" id="success-subnotice">
+                <div
+                  class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 max-w-md mx-auto"
+                  id="success-subnotice">
                   Salinan konfirmasi dan jadwal sesi diskusi awal akan dikirimkan ke <strong id="confirm-email"
                     class="text-slate-900 dark:text-white">email@perusahaan.co.id</strong> dalam 1×24 jam kerja.
                 </div>
@@ -904,19 +1016,26 @@
 
         <!-- Tautan Navigasi -->
         <div class="md:col-span-3 space-y-3">
-          <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-white" data-i18n="footer.navTitle">Navigasi</h4>
+          <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-white" data-i18n="footer.navTitle">
+            Navigasi</h4>
           <ul class="space-y-2.5 text-sm">
-            <li><a href="#beranda" data-i18n="nav.home" class="text-slate-400 hover:text-white transition-colors">Beranda</a></li>
-            <li><a href="#tentang-kami" data-i18n="nav.about" class="text-slate-400 hover:text-white transition-colors">Tentang Kami</a></li>
-            <li><a href="#layanan" data-i18n="nav.services" class="text-slate-400 hover:text-white transition-colors">Layanan Utama</a></li>
-            <li><a href="#metodologi" data-i18n="nav.methodology" class="text-slate-400 hover:text-white transition-colors">Metodologi Kerja</a></li>
-            <li><a href="#kontak" data-i18n="nav.contact" class="text-slate-400 hover:text-white transition-colors">Konsultasi &amp; Kontak</a></li>
+            <li><a href="#beranda" data-i18n="nav.home"
+                class="text-slate-400 hover:text-white transition-colors">Beranda</a></li>
+            <li><a href="#tentang-kami" data-i18n="nav.about"
+                class="text-slate-400 hover:text-white transition-colors">Tentang Kami</a></li>
+            <li><a href="#layanan" data-i18n="nav.services"
+                class="text-slate-400 hover:text-white transition-colors">Layanan Utama</a></li>
+            <li><a href="#metodologi" data-i18n="nav.methodology"
+                class="text-slate-400 hover:text-white transition-colors">Metodologi Kerja</a></li>
+            <li><a href="#kontak" data-i18n="nav.contact"
+                class="text-slate-400 hover:text-white transition-colors">Konsultasi &amp; Kontak</a></li>
           </ul>
         </div>
 
         <!-- Layanan Solusi -->
         <div class="md:col-span-4 space-y-3">
-          <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-white" data-i18n="footer.servicesTitle">Layanan Solusi</h4>
+          <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-white"
+            data-i18n="footer.servicesTitle">Layanan Solusi</h4>
           <ul class="space-y-2 text-xs text-slate-400" id="footer-services-list">
             <li>Konsultasi Strategi &amp; Arsitektur TIK</li>
             <li>Implementasi &amp; Integrasi Sistem Enterprise</li>
@@ -932,7 +1051,8 @@
       <!-- Baris Hak Cipta -->
       <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
         <p data-i18n="footer.copyright">&copy; 2026 Puriware. Hak Cipta Dilindungi Undang-Undang.</p>
-        <p class="text-slate-500" data-i18n="footer.tagline">One Stop IT Solutions — Konsultasi &amp; Implementasi Solusi TIK</p>
+        <p class="text-slate-500" data-i18n="footer.tagline">One Stop IT Solutions — Konsultasi &amp; Implementasi
+          Solusi TIK</p>
       </div>
     </div>
   </footer>
@@ -945,7 +1065,8 @@
     <div class="min-h-screen px-4 text-center flex items-center justify-center">
 
       <!-- Latar Belakang Redup (Backdrop) -->
-      <div id="modal-backdrop" class="fixed inset-0 bg-slate-900/60 dark:bg-black/75 backdrop-blur-sm modal-backdrop opacity-0"
+      <div id="modal-backdrop"
+        class="fixed inset-0 bg-slate-900/60 dark:bg-black/75 backdrop-blur-sm modal-backdrop opacity-0"
         aria-hidden="true"></div>
 
       <!-- Elemen Penyeimbang Posisi Vertikal -->
@@ -956,7 +1077,8 @@
         class="inline-block w-full max-w-2xl my-8 text-left align-middle bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden transform modal-panel opacity-0 scale-95 relative z-10">
 
         <!-- Bar Atas Modal dengan Tombol Tutup -->
-        <div class="px-6 sm:px-8 pt-6 pb-4 border-b border-slate-100 dark:border-slate-800 flex items-start justify-between gap-4">
+        <div
+          class="px-6 sm:px-8 pt-6 pb-4 border-b border-slate-100 dark:border-slate-800 flex items-start justify-between gap-4">
           <div class="flex items-center gap-3.5">
             <div id="modal-icon-container"
               class="w-11 h-11 rounded-xl bg-blue-50 dark:bg-blue-950 border border-blue-100 dark:border-blue-800 text-blue-600 dark:text-cyan-400 flex items-center justify-center shrink-0">
@@ -967,7 +1089,8 @@
                 class="font-heading text-xs font-bold tracking-wider text-blue-600 dark:text-cyan-400 uppercase">
                 LAYANAN 01
               </span>
-              <h3 id="modal-title" class="font-heading font-bold text-xl sm:text-2xl text-slate-900 dark:text-white leading-tight">
+              <h3 id="modal-title"
+                class="font-heading font-bold text-xl sm:text-2xl text-slate-900 dark:text-white leading-tight">
                 Judul Layanan
               </h3>
             </div>
@@ -994,8 +1117,10 @@
           <!-- Bagian Deliverables & Manfaat Bisnis -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
             <!-- Kolom Deliverables -->
-            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200/90 dark:border-slate-800 space-y-3">
-              <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">
+            <div
+              class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200/90 dark:border-slate-800 space-y-3">
+              <div
+                class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">
                 <span class="w-2 h-2 rounded-full bg-blue-600 dark:bg-cyan-400"></span>
                 <span data-i18n="modal.deliverablesTitle">Ruang Lingkup Deliverables</span>
               </div>
@@ -1005,8 +1130,10 @@
             </div>
 
             <!-- Kolom Manfaat Bisnis -->
-            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200/90 dark:border-slate-800 space-y-3">
-              <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">
+            <div
+              class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200/90 dark:border-slate-800 space-y-3">
+              <div
+                class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">
                 <span class="w-2 h-2 rounded-full bg-cyan-600 dark:text-cyan-400"></span>
                 <span data-i18n="modal.benefitsTitle">Manfaat Bisnis &amp; Nilai Strategis</span>
               </div>

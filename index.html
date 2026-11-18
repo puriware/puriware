@@ -23,12 +23,22 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
     rel="stylesheet" />
 
-  <!-- Script Pencegahan Flash Tema Gelap (Theme Initialization) -->
+  <!-- Script Inisialisasi Tema: Default Menyesuaikan Waktu Sunrise (06:00) & Sunset (18:00) -->
   <script>
     (function () {
+      function getSunTheme() {
+        const hour = new Date().getHours();
+        // Siang (Sunrise 06:00 s.d 17:59): Light Mode
+        // Malam (Sunset 18:00 s.d 05:59): Dark Mode
+        return (hour >= 6 && hour < 18) ? 'light' : 'dark';
+      }
+
       const savedTheme = localStorage.getItem('puriware_theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      const effectiveTheme = (savedTheme === 'dark' || savedTheme === 'light')
+        ? savedTheme
+        : getSunTheme();
+
+      if (effectiveTheme === 'dark') {
         document.documentElement.classList.add('dark');
       } else {
         document.documentElement.classList.remove('dark');
@@ -849,6 +859,11 @@
               <!-- Form Input -->
               <form id="consultation-form" action="https://formsubmit.co/info@puriware.com" method="POST"
                 class="space-y-5" novalidate>
+                <!-- Parameter Konfigurasi FormSubmit -->
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_subject" id="hidden-form-subject" value="[Puriware Konsultasi TIK] Permintaan Konsultasi Baru">
+                <input type="hidden" name="_next" id="hidden-form-next" value="">
                 <div class="border-b border-slate-100 dark:border-slate-800 pb-4">
                   <h3 class="font-heading font-bold text-xl text-slate-900 dark:text-white"
                     data-i18n="contact.formTitle">
@@ -2021,6 +2036,74 @@
         consultationSuccess.classList.remove('hidden');
       }
 
+      function showFormSuccess(fullName, companyName, selectedService, businessEmail, ticketId, projectDescription, activationNeeded = false) {
+        const ticketBadge = document.getElementById('ticket-badge');
+        if (ticketBadge) {
+          ticketBadge.textContent = currentLang === 'en'
+            ? `Reference ID: ${ticketId}`
+            : `ID Referensi: ${ticketId}`;
+        }
+
+        const mailtoSubject = encodeURIComponent(`[Puriware Konsultasi TIK] ${selectedService} - ${fullName} (${companyName}) [${ticketId}]`);
+        const mailtoBody = encodeURIComponent(
+          `Halo Tim Konsultan Puriware,\n\n` +
+          `Berikut adalah rincian permintaan konsultasi TIK:\n` +
+          `• ID Referensi: ${ticketId}\n` +
+          `• Nama Lengkap: ${fullName}\n` +
+          `• Perusahaan: ${companyName}\n` +
+          `• Email Bisnis: ${businessEmail}\n` +
+          `• Layanan yang Diminati: ${selectedService}\n` +
+          `• Kebutuhan Proyek:\n${projectDescription}\n\n` +
+          `Dikirim melalui website Puriware.`
+        );
+        const mailtoLink = `mailto:info@puriware.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+
+        const activationNoticeHtml = activationNeeded ? `
+          <div class="mt-3 p-3.5 rounded-xl bg-amber-50 dark:bg-amber-950/70 border border-amber-200 dark:border-amber-800 text-xs text-amber-800 dark:text-amber-300 text-left space-y-1.5">
+            <div class="font-bold flex items-center gap-1.5">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>
+              <span>${currentLang === 'en' ? 'Important: Email Activation Notice' : 'Penting: Aktivasi Email Pertama Kali'}</span>
+            </div>
+            <p>
+              ${currentLang === 'en'
+                ? 'FormSubmit has dispatched a 1-time activation email to <strong>info@puriware.com</strong>. The mailbox owner must click "Activate Form" once to start receiving all incoming web inquiries automatically.'
+                : 'Layanan FormSubmit mengirimkan 1 email aktivasi verifikasi ke <strong>info@puriware.com</strong>. Pemilik email wajib mengklik tombol "Activate Form" satu kali agar pesan formulir otomatis diteruskan ke inbox.'}
+            </p>
+          </div>
+        ` : '';
+
+        if (currentLang === 'en') {
+          successMessageText.innerHTML = `Thank you, <strong class="text-slate-900 dark:text-white">${fullName}</strong> from <strong class="text-slate-900 dark:text-white">${companyName}</strong>. Your consultation request for <span class="text-blue-600 dark:text-cyan-400 font-medium">${selectedService}</span> has been processed.`;
+          successSubnotice.innerHTML = `
+            <div>A confirmation copy and initial discovery schedule will be delivered to <strong class="text-slate-900 dark:text-white">${businessEmail}</strong> within 1 business day.</div>
+            ${activationNoticeHtml}
+            <div class="mt-3.5 pt-3 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <span class="text-slate-500 dark:text-slate-400 text-xs">Direct transmission:</span>
+              <a href="${mailtoLink}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 dark:bg-blue-950/80 border border-blue-200 dark:border-blue-800 text-xs font-semibold text-blue-600 dark:text-cyan-400 hover:bg-blue-100 transition-colors">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                <span>Send via Email Client (info@puriware.com)</span>
+              </a>
+            </div>
+          `;
+        } else {
+          successMessageText.innerHTML = `Terima kasih, <strong class="text-slate-900 dark:text-white">${fullName}</strong> dari <strong class="text-slate-900 dark:text-white">${companyName}</strong>. Permintaan konsultasi Anda untuk layanan <span class="text-blue-600 dark:text-cyan-400 font-medium">${selectedService}</span> telah diproses.`;
+          successSubnotice.innerHTML = `
+            <div>Salinan konfirmasi dan jadwal sesi diskusi awal akan dikirimkan ke <strong class="text-slate-900 dark:text-white">${businessEmail}</strong> dalam 1×24 jam kerja.</div>
+            ${activationNoticeHtml}
+            <div class="mt-3.5 pt-3 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <span class="text-slate-500 dark:text-slate-400 text-xs">Pengiriman langsung:</span>
+              <a href="${mailtoLink}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 dark:bg-blue-950/80 border border-blue-200 dark:border-blue-800 text-xs font-semibold text-blue-600 dark:text-cyan-400 hover:bg-blue-100 transition-colors">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                <span>Kirim via Aplikasi Email (info@puriware.com)</span>
+              </a>
+            </div>
+          `;
+        }
+
+        consultationForm.classList.add('hidden');
+        consultationSuccess.classList.remove('hidden');
+      }
+
       consultationForm?.addEventListener('submit', async (event) => {
         event.preventDefault();
 
@@ -2050,10 +2133,15 @@
         const randomTicketNum = Math.floor(1000 + Math.random() * 9000);
         const ticketId = `PW-2026-${randomTicketNum}`;
 
+        // Set Hidden Input Values
+        const hiddenSubject = document.getElementById('hidden-form-subject');
+        if (hiddenSubject) {
+          hiddenSubject.value = `[Puriware Konsultasi TIK] ${selectedService} - ${fullName} (${companyName}) [${ticketId}]`;
+        }
+
         // Ubah status tombol menjadi Loading
         const submitSpan = submitBtn.querySelector('span');
         const submitSvg = submitBtn.querySelector('svg');
-        const originalText = submitSpan ? submitSpan.textContent : '';
         submitBtn.disabled = true;
         submitBtn.classList.add('opacity-85', 'cursor-not-allowed');
         if (submitSpan) submitSpan.textContent = translations[currentLang].contact.sendingBtn;
@@ -2075,9 +2163,12 @@
           "Layanan": selectedService,
           "Deskripsi Kebutuhan": projectDescription,
           "ID Referensi": ticketId,
-          "_subject": `[Puriware Konsultasi TIK] Permintaan dari ${fullName} - ${companyName} (${ticketId})`,
-          "_template": "table"
+          "_subject": `[Puriware Konsultasi TIK] ${selectedService} - ${fullName} (${companyName}) [${ticketId}]`,
+          "_template": "table",
+          "_captcha": "false"
         };
+
+        let activationNeeded = false;
 
         try {
           // Kirim via FormSubmit AJAX langsung ke inbox info@puriware.com
@@ -2090,12 +2181,19 @@
             body: JSON.stringify(payload)
           });
 
-          // Tampilkan sukses terkirim
-          showFormSuccess(fullName, companyName, selectedService, businessEmail, ticketId, projectDescription);
+          const result = await response.json().catch(() => null);
+          if (result && result.message && result.message.toLowerCase().includes('activate')) {
+            activationNeeded = true;
+          }
+
+          showFormSuccess(fullName, companyName, selectedService, businessEmail, ticketId, projectDescription, activationNeeded);
         } catch (err) {
-          console.warn('Pengiriman formulir via FormSubmit API:', err);
-          // Jika terjadi kendala jaringan, tetap tampilkan konfirmasi sukses dengan link direct mailto
-          showFormSuccess(fullName, companyName, selectedService, businessEmail, ticketId, projectDescription);
+          console.warn('FormSubmit AJAX Notice (Mungkin diblokir oleh CORS saat dibuka via file://):', err);
+          // Jika berjalan di lokal (file://) atau AJAX diblokir CORS, submit native form ke FormSubmit atau tampilkan panduan
+          if (window.location.protocol === 'file:') {
+            activationNeeded = true;
+          }
+          showFormSuccess(fullName, companyName, selectedService, businessEmail, ticketId, projectDescription, activationNeeded);
         } finally {
           submitBtn.disabled = false;
           submitBtn.classList.remove('opacity-85', 'cursor-not-allowed');

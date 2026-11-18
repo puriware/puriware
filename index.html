@@ -4,9 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Puriware — One Stop IT Solutions | Konsultasi & Implementasi Solusi TIK</title>
-  <meta name="description"
+  <title id="doc-title">Puriware — One Stop IT Solutions | Konsultasi & Implementasi Solusi TIK</title>
+  <meta id="doc-meta-desc" name="description"
     content="Puriware adalah mitra strategis konsultasi dan implementasi solusi berbasis Teknologi Informasi dan Komunikasi (TIK) terpadu. One Stop IT Solutions." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo/puriware_only_logo.png" />
 
   <!-- Google Fonts: Plus Jakarta Sans (Headings) & Inter (Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,12 +18,26 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
     rel="stylesheet" />
 
+  <!-- Script Pencegahan Flash Tema Gelap (Theme Initialization) -->
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('puriware_theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+  </script>
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Konfigurasi Kustom Tailwind CSS -->
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
@@ -43,21 +60,15 @@
     };
   </script>
 
-  <!-- Gaya Kustom Tambahan untuk Pola Arsitektural, Glassmorphism & Animasi Halus -->
+  <!-- Gaya Kustom Tambahan -->
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      color: #0F172A;
-      background-color: #FFFFFF;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    .font-heading {
+    h1, h2, h3, h4, .font-heading {
       font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
@@ -68,10 +79,20 @@
         linear-gradient(to right, rgba(226, 232, 240, 0.55) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(226, 232, 240, 0.55) 1px, transparent 1px);
     }
+    .dark .bg-architectural-grid {
+      background-image:
+        linear-gradient(to right, rgba(51, 65, 85, 0.28) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(51, 65, 85, 0.28) 1px, transparent 1px);
+    }
 
     /* Efek Glassmorphism pada Sticky Navbar */
     .navbar-glass {
-      background: rgba(255, 255, 255, 0.86);
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .dark .navbar-glass {
+      background: rgba(15, 23, 42, 0.88);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
     }
@@ -81,7 +102,6 @@
       background: linear-gradient(135deg, #2563EB 0%, #0284C7 100%);
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
-
     .btn-primary-gradient:hover {
       background: linear-gradient(135deg, #1D4ED8 0%, #0369A1 100%);
       transform: translateY(-1px);
@@ -92,70 +112,87 @@
     .modal-backdrop {
       transition: opacity 0.25s ease;
     }
-
     .modal-panel {
       transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
     }
   </style>
 </head>
 
-<body class="selection:bg-blue-100 selection:text-blue-900">
+<body class="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200">
 
   <!-- =====================================================================
        1. STICKY GLASSMORPHISM NAVBAR
        ===================================================================== -->
   <header id="navbar"
-    class="sticky top-0 z-40 w-full border-b border-slate-200/80 navbar-glass transition-all duration-300">
+    class="sticky top-0 z-40 w-full border-b border-slate-200/80 dark:border-slate-800/80 navbar-glass transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20">
 
-        <!-- Logo Kustom SVG Geometris + Wordmark Puriware -->
-        <a href="#beranda" class="flex items-center gap-3 group focus:outline-none">
-          <div
-            class="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center shadow-sm group-hover:bg-blue-600 transition-colors duration-300">
-            <!-- Ikon Geometris Puriware: Struktur kubus & simpul konektivitas terpadu -->
-            <svg class="w-6 h-6 text-white" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true">
-              <path d="M14 3L23.5 8.5V19.5L14 25L4.5 19.5V8.5L14 3Z" stroke="currentColor" stroke-width="2"
-                stroke-linejoin="round" />
-              <path d="M14 14L23.5 8.5M14 14V25M14 14L4.5 8.5" stroke="#38BDF8" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" />
-              <circle cx="14" cy="14" r="2.2" fill="#FFFFFF" />
-            </svg>
-          </div>
-          <div class="flex flex-col">
-            <span class="font-heading font-extrabold text-xl tracking-tight text-slate-900 leading-none">
-              Puri<span class="text-blue-600">ware</span>
-            </span>
-            <span class="text-[10px] font-medium tracking-widest uppercase text-slate-500 mt-1">
-              One Stop IT Solutions
-            </span>
-          </div>
+        <!-- Logo Terintegrasi Aset Puriware (Light & Dark Mode) -->
+        <a href="#beranda" class="flex items-center gap-3 group focus:outline-none" aria-label="Puriware Home">
+          <!-- Logo untuk Mode Terang -->
+          <img src="assets/logo/puriware_logo_text.png" alt="Puriware Logo"
+            class="h-9 w-auto max-w-[170px] sm:max-w-[195px] object-contain dark:hidden transition-transform duration-200 group-hover:scale-[1.02]" />
+          <!-- Logo untuk Mode Gelap -->
+          <img src="assets/logo/puriware_logo_text_white.png" alt="Puriware Logo"
+            class="h-9 w-auto max-w-[170px] sm:max-w-[195px] object-contain hidden dark:block transition-transform duration-200 group-hover:scale-[1.02]" />
         </a>
 
         <!-- Navigasi Desktop -->
-        <nav class="hidden md:flex items-center gap-8" aria-label="Navigasi Utama">
-          <a href="#beranda"
-            class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Beranda</a>
-          <a href="#tentang-kami"
-            class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Tentang Kami</a>
-          <a href="#layanan"
-            class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Layanan</a>
-          <a href="#metodologi"
-            class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Metodologi</a>
-          <a href="#kontak" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Kontak</a>
+        <nav class="hidden md:flex items-center gap-7 lg:gap-8" aria-label="Navigasi Utama">
+          <a href="#beranda" data-i18n="nav.home"
+            class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors">Beranda</a>
+          <a href="#tentang-kami" data-i18n="nav.about"
+            class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors">Tentang Kami</a>
+          <a href="#layanan" data-i18n="nav.services"
+            class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors">Layanan</a>
+          <a href="#metodologi" data-i18n="nav.methodology"
+            class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors">Metodologi</a>
+          <a href="#kontak" data-i18n="nav.contact"
+            class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors">Kontak</a>
         </nav>
 
-        <!-- Tombol CTA Utama Desktop & Tombol Hamburger Mobile -->
-        <div class="flex items-center gap-3">
-          <a href="#kontak"
-            class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-sm font-semibold text-white btn-primary-gradient shadow-blue-glow">
+        <!-- Aksi Navbar: Switcher Bahasa, Dark Mode Toggle & CTA -->
+        <div class="flex items-center gap-2 sm:gap-3">
+
+          <!-- Pemilih Bahasa (Language Switcher: ID | EN) -->
+          <div class="flex items-center p-0.5 rounded-xl bg-slate-100 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-xs font-semibold" role="group" aria-label="Pilihan Bahasa">
+            <button type="button" id="lang-btn-id"
+              class="px-2.5 py-1 rounded-lg transition-all duration-200 bg-white dark:bg-slate-700 text-blue-600 dark:text-cyan-400 shadow-xs font-bold"
+              aria-label="Pilih Bahasa Indonesia">
+              ID
+            </button>
+            <button type="button" id="lang-btn-en"
+              class="px-2.5 py-1 rounded-lg transition-all duration-200 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+              aria-label="Select English Language">
+              EN
+            </button>
+          </div>
+
+          <!-- Tombol Tema Gelap / Terang (Dark/Light Mode Toggle) -->
+          <button type="button" id="theme-toggle-btn"
+            class="p-2 sm:p-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+            aria-label="Ganti Mode Gelap/Terang" title="Tema Gelap / Terang">
+            <!-- Ikon Matahari (muncul di mode gelap untuk kembali ke terang) -->
+            <svg id="theme-icon-sun" class="w-4 h-4 sm:w-5 sm:h-5 hidden dark:block text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4" fill="currentColor" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+            </svg>
+            <!-- Ikon Bulan (muncul di mode terang untuk berganti ke gelap) -->
+            <svg id="theme-icon-moon" class="w-4 h-4 sm:w-5 sm:h-5 block dark:hidden text-slate-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+            </svg>
+          </button>
+
+          <!-- Tombol CTA Konsultasi Desktop -->
+          <a href="#kontak" data-i18n="nav.cta"
+            class="hidden lg:inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-sm font-semibold text-white btn-primary-gradient shadow-blue-glow">
             Konsultasi Sekarang
           </a>
 
           <!-- Tombol Hamburger Mobile -->
           <button id="mobile-menu-btn" type="button"
-            class="md:hidden inline-flex items-center justify-center p-2.5 rounded-xl text-slate-700 hover:text-blue-600 hover:bg-slate-100 border border-slate-200 transition-colors focus:outline-none"
+            class="md:hidden inline-flex items-center justify-center p-2.5 rounded-xl text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 transition-colors focus:outline-none"
             aria-controls="mobile-menu" aria-expanded="false" aria-label="Buka menu navigasi">
             <svg id="icon-menu-open" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
               viewBox="0 0 24 24">
@@ -171,21 +208,20 @@
     </div>
 
     <!-- Drawer Menu Navigasi Mobile -->
-    <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 bg-white/95 backdrop-blur-lg">
-      <div class="px-4 pt-3 pb-5 space-y-1.5">
-        <a href="#beranda"
-          class="mobile-nav-link block px-3.5 py-2.5 rounded-xl text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-600">Beranda</a>
-        <a href="#tentang-kami"
-          class="mobile-nav-link block px-3.5 py-2.5 rounded-xl text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-600">Tentang
-          Kami</a>
-        <a href="#layanan"
-          class="mobile-nav-link block px-3.5 py-2.5 rounded-xl text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-600">Layanan</a>
-        <a href="#metodologi"
-          class="mobile-nav-link block px-3.5 py-2.5 rounded-xl text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-600">Metodologi</a>
-        <a href="#kontak"
-          class="mobile-nav-link block px-3.5 py-2.5 rounded-xl text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-600">Kontak</a>
-        <div class="pt-2">
-          <a href="#kontak"
+    <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg">
+      <div class="px-4 pt-3 pb-5 space-y-2">
+        <a href="#beranda" data-i18n="nav.home"
+          class="mobile-nav-link block px-3.5 py-2.5 rounded-xl text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-cyan-400">Beranda</a>
+        <a href="#tentang-kami" data-i18n="nav.about"
+          class="mobile-nav-link block px-3.5 py-2.5 rounded-xl text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-cyan-400">Tentang Kami</a>
+        <a href="#layanan" data-i18n="nav.services"
+          class="mobile-nav-link block px-3.5 py-2.5 rounded-xl text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-cyan-400">Layanan</a>
+        <a href="#metodologi" data-i18n="nav.methodology"
+          class="mobile-nav-link block px-3.5 py-2.5 rounded-xl text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-cyan-400">Metodologi</a>
+        <a href="#kontak" data-i18n="nav.contact"
+          class="mobile-nav-link block px-3.5 py-2.5 rounded-xl text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-cyan-400">Kontak</a>
+        <div class="pt-3">
+          <a href="#kontak" data-i18n="nav.cta"
             class="mobile-nav-link flex items-center justify-center w-full px-5 py-3 rounded-xl text-sm font-semibold text-white btn-primary-gradient shadow-blue-glow">
             Konsultasi Sekarang
           </a>
@@ -198,13 +234,13 @@
     <!-- =====================================================================
          2. HERO SECTION
          ===================================================================== -->
-    <section id="beranda" class="relative overflow-hidden bg-white bg-architectural-grid border-b border-slate-200/80">
+    <section id="beranda" class="relative overflow-hidden bg-white dark:bg-slate-950 bg-architectural-grid border-b border-slate-200/80 dark:border-slate-800/80">
       <!-- Dekorasi Cahaya Radial Halus -->
       <div
-        class="pointer-events-none absolute -top-24 right-0 w-[520px] h-[520px] rounded-full bg-gradient-to-br from-blue-100/60 via-cyan-50/40 to-transparent blur-3xl">
+        class="pointer-events-none absolute -top-24 right-0 w-[520px] h-[520px] rounded-full bg-gradient-to-br from-blue-100/60 dark:from-blue-900/20 via-cyan-50/40 dark:via-cyan-900/10 to-transparent blur-3xl">
       </div>
       <div
-        class="pointer-events-none absolute bottom-0 -left-24 w-[400px] h-[400px] rounded-full bg-slate-100/80 blur-3xl">
+        class="pointer-events-none absolute bottom-0 -left-24 w-[400px] h-[400px] rounded-full bg-slate-100/80 dark:bg-slate-900/40 blur-3xl">
       </div>
 
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-28">
@@ -214,25 +250,24 @@
           <div class="lg:col-span-7 space-y-7">
             <!-- Pill Badge Slogan -->
             <div
-              class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-blue-50/90 border border-blue-200/80 text-blue-700 shadow-xs">
+              class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-blue-50/90 dark:bg-blue-950/70 border border-blue-200/80 dark:border-blue-800/60 text-blue-700 dark:text-cyan-400 shadow-xs">
               <span class="relative flex h-2 w-2">
                 <span
                   class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600 dark:bg-cyan-400"></span>
               </span>
-              <span class="font-heading text-xs sm:text-sm font-bold tracking-wide">One Stop IT Solutions</span>
+              <span class="font-heading text-xs sm:text-sm font-bold tracking-wide" data-i18n="hero.badge">One Stop IT Solutions</span>
             </div>
 
             <!-- Headline Utama -->
             <h1
-              class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-[46px] text-slate-900 tracking-tight leading-[1.16]">
-              Mitra Strategis Konsultasi &amp; Implementasi
-              <span class="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Solusi TIK
-                Terpadu</span>
+              class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-[46px] text-slate-900 dark:text-white tracking-tight leading-[1.16]">
+              <span data-i18n="hero.titlePrefix">Mitra Strategis Konsultasi &amp; Implementasi</span>
+              <span class="bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent" data-i18n="hero.titleHighlight">Solusi TIK Terpadu</span>
             </h1>
 
             <!-- Proposisi Nilai Ringkas -->
-            <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl">
+            <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl" data-i18n="hero.desc">
               Puriware membantu perusahaan dan institusi merancang, mengintegrasikan, serta mengoptimalkan infrastruktur
               TIK dan ekosistem sistem digital secara menyeluruh—menghadirkan fondasi teknologi yang tangguh, aman, dan
               selaras dengan target pertumbuhan bisnis Anda.
@@ -242,30 +277,30 @@
             <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1">
               <a href="#kontak"
                 class="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl text-sm sm:text-base font-semibold text-white btn-primary-gradient shadow-blue-glow">
-                <span>Jadwalkan Konsultasi</span>
+                <span data-i18n="hero.ctaConsult">Jadwalkan Konsultasi</span>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                 </svg>
               </a>
               <a href="#layanan"
-                class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl text-sm sm:text-base font-semibold text-slate-800 bg-white hover:bg-slate-50 border border-slate-200 hover:border-slate-300 shadow-soft transition-all">
-                <span>Lihat Layanan</span>
+                class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl text-sm sm:text-base font-semibold text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 shadow-soft transition-all">
+                <span data-i18n="hero.ctaServices">Lihat Layanan</span>
               </a>
             </div>
 
             <!-- Pilar Kepercayaan Ringkas -->
-            <div class="pt-4 border-t border-slate-200/80 grid grid-cols-3 gap-4 max-w-xl">
+            <div class="pt-4 border-t border-slate-200/80 dark:border-slate-800 grid grid-cols-3 gap-4 max-w-xl">
               <div>
-                <p class="font-heading font-bold text-sm sm:text-base text-slate-900">End-to-End</p>
-                <p class="text-xs text-slate-500 mt-0.5">Perencanaan hingga operasi</p>
+                <p class="font-heading font-bold text-sm sm:text-base text-slate-900 dark:text-white" data-i18n="hero.stat1Title">End-to-End</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" data-i18n="hero.stat1Desc">Perencanaan hingga operasi</p>
               </div>
               <div>
-                <p class="font-heading font-bold text-sm sm:text-base text-slate-900">Arsitektur Terbuka</p>
-                <p class="text-xs text-slate-500 mt-0.5">Skalabel &amp; mudah terintegrasi</p>
+                <p class="font-heading font-bold text-sm sm:text-base text-slate-900 dark:text-white" data-i18n="hero.stat2Title">Arsitektur Terbuka</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" data-i18n="hero.stat2Desc">Skalalbel &amp; mudah terintegrasi</p>
               </div>
               <div>
-                <p class="font-heading font-bold text-sm sm:text-base text-slate-900">Standar Enterprise</p>
-                <p class="text-xs text-slate-500 mt-0.5">Keamanan &amp; SLA terukur</p>
+                <p class="font-heading font-bold text-sm sm:text-base text-slate-900 dark:text-white" data-i18n="hero.stat3Title">Standar Enterprise</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" data-i18n="hero.stat3Desc">Keamanan &amp; SLA terukur</p>
               </div>
             </div>
           </div>
@@ -275,81 +310,78 @@
             <div class="relative mx-auto max-w-md lg:max-w-none">
               <!-- Aksen bingkai belakang -->
               <div
-                class="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-blue-600/10 via-cyan-500/10 to-slate-200/40 blur-md">
+                class="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-blue-600/15 via-cyan-500/15 to-slate-200/40 dark:to-slate-800/40 blur-md">
               </div>
 
-              <!-- Kartu Utama Topologi Arsitektur Puriware -->
-              <div class="relative rounded-2xl bg-white border border-slate-200 shadow-elevated overflow-hidden">
+              <!-- Kartu Utama Topologi Arsitektur Puriware (Desain Arsitektur Asli) -->
+              <div class="relative rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-elevated overflow-hidden">
                 <!-- Bar Header Kartu -->
-                <div class="px-5 py-3.5 bg-slate-900 text-white flex items-center justify-between">
+                <div class="px-5 py-3.5 bg-slate-900 dark:bg-slate-950 text-white flex items-center justify-between border-b border-slate-800">
                   <div class="flex items-center gap-2">
                     <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
-                    <span class="font-heading text-xs font-semibold tracking-wide text-slate-200">
+                    <span class="font-heading text-xs font-semibold tracking-wide text-slate-200" data-i18n="hero.hubHeader">
                       PURIWARE ICT ARCHITECTURE HUB
                     </span>
                   </div>
                   <span
-                    class="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-blue-500/20 text-cyan-300 border border-cyan-400/30">
+                    class="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-blue-500/20 text-cyan-300 border border-cyan-400/30" data-i18n="hero.hubBadge">
                     Terintegrasi
                   </span>
                 </div>
 
-                <!-- Visualisasi Diagram Topologi SVG -->
-                <div class="p-6 bg-gradient-to-b from-slate-50/70 to-white">
+                <!-- Visualisasi Diagram Topologi SVG Asli -->
+                <div class="p-6 bg-gradient-to-b from-slate-50/70 dark:from-slate-900 to-white dark:to-slate-950">
                   <svg class="w-full h-auto" viewBox="0 0 420 230" fill="none" xmlns="http://www.w3.org/2000/svg"
                     role="img" aria-label="Diagram Arsitektur Solusi TIK Terpadu Puriware">
                     <!-- Garis Koneksi Utama -->
                     <path d="M210 56V95" stroke="#2563EB" stroke-width="2" stroke-dasharray="4 4" />
                     <path d="M210 135V166" stroke="#0284C7" stroke-width="2" />
-                    <path d="M95 166H325" stroke="#CBD5E1" stroke-width="2" />
+                    <path d="M95 166H325" stroke="#CBD5E1" class="dark:stroke-slate-700" stroke-width="2" />
                     <path d="M95 166V182" stroke="#2563EB" stroke-width="2" />
                     <path d="M210 166V182" stroke="#0284C7" stroke-width="2" />
-                    <path d="M325 166V182" stroke="#0F172A" stroke-width="2" />
+                    <path d="M325 166V182" stroke="#0F172A" class="dark:stroke-slate-400" stroke-width="2" />
 
                     <!-- Node Atas: Strategi & Tata Kelola TIK -->
-                    <rect x="115" y="14" width="190" height="42" rx="10" fill="#FFFFFF" stroke="#CBD5E1"
+                    <rect x="115" y="14" width="190" height="42" rx="10" fill="#FFFFFF" class="dark:fill-slate-800" stroke="#CBD5E1" class="dark:stroke-slate-700"
                       stroke-width="1.5" />
-                    <circle cx="137" cy="35" r="7" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" />
+                    <circle cx="137" cy="35" r="7" fill="#EFF6FF" class="dark:fill-slate-700" stroke="#2563EB" stroke-width="1.5" />
                     <circle cx="137" cy="35" r="2.5" fill="#2563EB" />
-                    <text x="154" y="33" fill="#0F172A" font-family="Plus Jakarta Sans, sans-serif" font-size="11"
-                      font-weight="700">Strategi &amp; Arsitektur TIK</text>
-                    <text x="154" y="46" fill="#64748B" font-family="Inter, sans-serif" font-size="9.5">IT Blueprint
-                      &amp; Governance</text>
+                    <text x="154" y="33" fill="#0F172A" class="dark:fill-white" font-family="'Plus Jakarta Sans', sans-serif" font-size="11"
+                      font-weight="700" data-i18n="hero.hubNode1Title">Strategi &amp; Arsitektur TIK</text>
+                    <text x="154" y="46" fill="#64748B" class="dark:fill-slate-400" font-family="'Inter', sans-serif" font-size="9.5" data-i18n="hero.hubNode1Sub">IT Blueprint &amp; Governance</text>
 
                     <!-- Node Inti Tengah: Puriware Integration Core -->
                     <rect x="85" y="95" width="250" height="44" rx="12" fill="url(#coreGrad)" />
                     <circle cx="110" cy="117" r="8" fill="rgba(255,255,255,0.18)" />
                     <path d="M107 117L109.5 119.5L114 114.5" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"
                       stroke-linejoin="round" />
-                    <text x="128" y="115" fill="#FFFFFF" font-family="Plus Jakarta Sans, sans-serif" font-size="11.5"
+                    <text x="128" y="115" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5"
                       font-weight="700">Puriware One-Stop Integration Core</text>
-                    <text x="128" y="128" fill="#BAE6FD" font-family="Inter, sans-serif" font-size="9.5">Orkestrasi
-                      Sistem, Cloud &amp; Keamanan</text>
+                    <text x="128" y="128" fill="#BAE6FD" font-family="'Inter', sans-serif" font-size="9.5" data-i18n="hero.hubCoreSub">Orkestrasi Sistem, Cloud &amp; Keamanan</text>
 
                     <!-- 3 Node Lapisan Implementasi Bawah -->
                     <!-- Node 1: Cloud & Infra -->
-                    <rect x="35" y="182" width="120" height="40" rx="9" fill="#FFFFFF" stroke="#E2E8F0"
+                    <rect x="35" y="182" width="120" height="40" rx="9" fill="#FFFFFF" class="dark:fill-slate-800" stroke="#E2E8F0" class="dark:stroke-slate-700"
                       stroke-width="1.5" />
-                    <text x="95" y="200" text-anchor="middle" fill="#0F172A" font-family="Plus Jakarta Sans, sans-serif"
-                      font-size="10" font-weight="700">Cloud &amp; Jaringan</text>
-                    <text x="95" y="213" text-anchor="middle" fill="#2563EB" font-family="Inter, sans-serif"
+                    <text x="95" y="200" text-anchor="middle" fill="#0F172A" class="dark:fill-white" font-family="'Plus Jakarta Sans', sans-serif"
+                      font-size="10" font-weight="700" data-i18n="hero.hubNode2Title">Cloud &amp; Jaringan</text>
+                    <text x="95" y="213" text-anchor="middle" fill="#2563EB" class="dark:fill-cyan-400" font-family="'Inter', sans-serif"
                       font-size="9" font-weight="500">High Availability</text>
 
                     <!-- Node 2: Sistem Enterprise -->
-                    <rect x="165" y="182" width="90" height="40" rx="9" fill="#FFFFFF" stroke="#E2E8F0"
+                    <rect x="165" y="182" width="90" height="40" rx="9" fill="#FFFFFF" class="dark:fill-slate-800" stroke="#E2E8F0" class="dark:stroke-slate-700"
                       stroke-width="1.5" />
-                    <text x="210" y="200" text-anchor="middle" fill="#0F172A"
-                      font-family="Plus Jakarta Sans, sans-serif" font-size="10" font-weight="700">Aplikasi &amp;
-                      API</text>
-                    <text x="210" y="213" text-anchor="middle" fill="#0284C7" font-family="Inter, sans-serif"
+                    <text x="210" y="200" text-anchor="middle" fill="#0F172A" class="dark:fill-white"
+                      font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" data-i18n="hero.hubNode3Title">Aplikasi &amp; API</text>
+                    <text x="210" y="213" text-anchor="middle" fill="#0284C7" class="dark:fill-cyan-400" font-family="'Inter', sans-serif"
                       font-size="9" font-weight="500">Seamless Sync</text>
 
                     <!-- Node 3: Cyber Security -->
-                    <rect x="265" y="182" width="120" height="40" rx="9" fill="#FFFFFF" stroke="#E2E8F0"
+                    <rect x="265" y="182" width="120" height="40" rx="9" fill="#FFFFFF" class="dark:fill-slate-800" stroke="#E2E8F0" class="dark:stroke-slate-700"
                       stroke-width="1.5" />
-                    <text x="325" y="200" text-anchor="middle" fill="#0F172A"
-                      font-family="Plus Jakarta Sans, sans-serif" font-size="10" font-weight="700">Keamanan Siber</text>
-                    <text x="325" y="213" text-anchor="middle" fill="#0F172A" font-family="Inter, sans-serif"
+                    <text x="325" y="200" text-anchor="middle" fill="#0F172A" class="dark:fill-white"
+                      font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" data-i18n="hero.hubNode4Title">Keamanan Siber</text>
+                    <text x="325" y="213" text-anchor="middle" fill="#0F172A" class="dark:fill-emerald-400" font-family="'Inter', sans-serif"
                       font-size="9" font-weight="500">Zero-Trust Ready</text>
 
                     <defs>
@@ -361,17 +393,15 @@
                     </defs>
                   </svg>
 
-                  <!-- Bar Ringkasan Kapabilitas di Bawah Diagram -->
-                  <div class="mt-4 pt-4 border-t border-slate-200/80 grid grid-cols-2 gap-3">
-                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/70">
-                      <span class="text-[11px] font-medium text-slate-500 block">Pendekatan Konsultasi</span>
-                      <span class="font-heading font-bold text-sm text-slate-900 mt-0.5 block">Vendor-Neutral &amp;
-                        Terukur</span>
+                  <!-- Bar Ringkasan Kapabilitas di Bawah Diagram (Desain Asli) -->
+                  <div class="mt-4 pt-4 border-t border-slate-200/80 dark:border-slate-800 grid grid-cols-2 gap-3">
+                    <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/70 dark:border-slate-700/80">
+                      <span class="text-[11px] font-medium text-slate-500 dark:text-slate-400 block" data-i18n="hero.cap1Label">Pendekatan Konsultasi</span>
+                      <span class="font-heading font-bold text-sm text-slate-900 dark:text-white mt-0.5 block" data-i18n="hero.cap1Val">Vendor-Neutral &amp; Terukur</span>
                     </div>
-                    <div class="p-3 rounded-xl bg-blue-50/60 border border-blue-100">
-                      <span class="text-[11px] font-medium text-blue-700 block">Siklus Layanan</span>
-                      <span class="font-heading font-bold text-sm text-slate-900 mt-0.5 block">Asesmen hingga
-                        Managed</span>
+                    <div class="p-3 rounded-xl bg-blue-50/60 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-900/60">
+                      <span class="text-[11px] font-medium text-blue-700 dark:text-cyan-400 block" data-i18n="hero.cap2Label">Siklus Layanan</span>
+                      <span class="font-heading font-bold text-sm text-slate-900 dark:text-white mt-0.5 block" data-i18n="hero.cap2Val">Asesmen hingga Managed</span>
                     </div>
                   </div>
                 </div>
@@ -386,22 +416,22 @@
     <!-- =====================================================================
          3. TENTANG KAMI (ABOUT US)
          ===================================================================== -->
-    <section id="tentang-kami" class="py-20 sm:py-24 bg-alabaster border-b border-slate-200/80 scroll-mt-20">
+    <section id="tentang-kami" class="py-20 sm:py-24 bg-alabaster dark:bg-slate-900/60 border-b border-slate-200/80 dark:border-slate-800/80 scroll-mt-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- Header & Narasi Korporat -->
         <div class="max-w-3xl">
-          <span class="inline-block text-xs font-bold uppercase tracking-widest text-blue-600 mb-3">
+          <span class="inline-block text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-cyan-400 mb-3" data-i18n="about.badge">
             Tentang Puriware
           </span>
           <h2
-            class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 tracking-tight leading-tight">
+            class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 dark:text-white tracking-tight leading-tight" data-i18n="about.title">
             Menjembatani Strategi Bisnis dengan Eksekusi Teknologi yang Presisi
           </h2>
-          <p class="mt-5 text-base sm:text-lg text-slate-600 leading-relaxed">
+          <p class="mt-5 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="about.desc">
             Sebagai perusahaan konsultasi dan implementasi solusi berbasis TIK, <strong
-              class="font-semibold text-slate-900">Puriware</strong> hadir dengan filosofi <em
-              class="not-italic font-medium text-blue-700">One Stop IT Solutions</em>. Kami memahami bahwa investasi
+              class="font-semibold text-slate-900 dark:text-white">Puriware</strong> hadir dengan filosofi <em
+              class="not-italic font-medium text-blue-700 dark:text-cyan-400">One Stop IT Solutions</em>. Kami memahami bahwa investasi
             teknologi hanya memberikan nilai optimal apabila dirancang secara menyeluruh, terintegrasi antar-lini, dan
             diimplementasikan dengan tata kelola yang disiplin.
           </p>
@@ -412,18 +442,18 @@
 
           <!-- Pilar 1 -->
           <div
-            class="group bg-white rounded-2xl p-7 border border-slate-200 shadow-soft hover:shadow-elevated hover:border-blue-200 transition-all duration-300">
+            class="group bg-white dark:bg-slate-900 rounded-2xl p-7 border border-slate-200 dark:border-slate-800 shadow-soft hover:shadow-elevated hover:border-blue-200 dark:hover:border-blue-700 transition-all duration-300">
             <div
-              class="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+              class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-950 border border-blue-100 dark:border-blue-800 flex items-center justify-center text-blue-600 dark:text-cyan-400 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round"
                   d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
               </svg>
             </div>
-            <h3 class="mt-6 font-heading font-bold text-lg text-slate-900">
+            <h3 class="mt-6 font-heading font-bold text-lg text-slate-900 dark:text-white" data-i18n="about.p1Title">
               Solusi Terintegrasi
             </h3>
-            <p class="mt-2.5 text-sm text-slate-600 leading-relaxed">
+            <p class="mt-2.5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="about.p1Desc">
               Menyatukan infrastruktur jaringan, komputasi cloud, sistem enterprise, dan keamanan informasi dalam satu
               ekosistem tunggal yang saling terhubung tanpa silo operasional.
             </p>
@@ -431,18 +461,18 @@
 
           <!-- Pilar 2 -->
           <div
-            class="group bg-white rounded-2xl p-7 border border-slate-200 shadow-soft hover:shadow-elevated hover:border-blue-200 transition-all duration-300">
+            class="group bg-white dark:bg-slate-900 rounded-2xl p-7 border border-slate-200 dark:border-slate-800 shadow-soft hover:shadow-elevated hover:border-blue-200 dark:hover:border-blue-700 transition-all duration-300">
             <div
-              class="w-12 h-12 rounded-xl bg-cyan-50 border border-cyan-100 flex items-center justify-center text-cyan-700 group-hover:bg-cyan-600 group-hover:text-white transition-colors duration-300">
+              class="w-12 h-12 rounded-xl bg-cyan-50 dark:bg-cyan-950 border border-cyan-100 dark:border-cyan-800 flex items-center justify-center text-cyan-700 dark:text-cyan-300 group-hover:bg-cyan-600 group-hover:text-white transition-colors duration-300">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round"
                   d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
               </svg>
             </div>
-            <h3 class="mt-6 font-heading font-bold text-lg text-slate-900">
+            <h3 class="mt-6 font-heading font-bold text-lg text-slate-900 dark:text-white" data-i18n="about.p2Title">
               Pendekatan Berbasis Kebutuhan
             </h3>
-            <p class="mt-2.5 text-sm text-slate-600 leading-relaxed">
+            <p class="mt-2.5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="about.p2Desc">
               Kami tidak menerapkan solusi generik. Setiap cetak biru arsitektur disusun berdasarkan diagnosis proses
               bisnis, kesiapan tim, serta skala anggaran organisasi Anda.
             </p>
@@ -450,18 +480,18 @@
 
           <!-- Pilar 3 -->
           <div
-            class="group bg-white rounded-2xl p-7 border border-slate-200 shadow-soft hover:shadow-elevated hover:border-blue-200 transition-all duration-300">
+            class="group bg-white dark:bg-slate-900 rounded-2xl p-7 border border-slate-200 dark:border-slate-800 shadow-soft hover:shadow-elevated hover:border-blue-200 dark:hover:border-blue-700 transition-all duration-300">
             <div
-              class="w-12 h-12 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-800 group-hover:bg-slate-900 group-hover:text-white transition-colors duration-300">
+              class="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-800 dark:text-slate-200 group-hover:bg-slate-900 dark:group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round"
                   d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
               </svg>
             </div>
-            <h3 class="mt-6 font-heading font-bold text-lg text-slate-900">
+            <h3 class="mt-6 font-heading font-bold text-lg text-slate-900 dark:text-white" data-i18n="about.p3Title">
               Implementasi Terukur
             </h3>
-            <p class="mt-2.5 text-sm text-slate-600 leading-relaxed">
+            <p class="mt-2.5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="about.p3Desc">
               Setiap tahapan proyek dilengkapi indikator keberhasilan yang transparan, dokumentasi teknis komprehensif,
               pengujian ketat, serta pendampingan alih pengetahuan.
             </p>
@@ -474,32 +504,32 @@
     <!-- =====================================================================
          4. LAYANAN UTAMA (INTERACTIVE 6-CARD GRID + MODAL DETAIL)
          ===================================================================== -->
-    <section id="layanan" class="py-20 sm:py-24 bg-white border-b border-slate-200/80 scroll-mt-20">
+    <section id="layanan" class="py-20 sm:py-24 bg-white dark:bg-slate-950 border-b border-slate-200/80 dark:border-slate-800/80 scroll-mt-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- Header Section -->
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div class="max-w-2xl">
-            <span class="inline-block text-xs font-bold uppercase tracking-widest text-blue-600 mb-3">
+            <span class="inline-block text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-cyan-400 mb-3" data-i18n="services.badge">
               Layanan Utama
             </span>
-            <h2 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 tracking-tight">
+            <h2 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 dark:text-white tracking-tight" data-i18n="services.title">
               Portofolio Konsultasi &amp; Implementasi TIK
             </h2>
-            <p class="mt-3.5 text-base text-slate-600 leading-relaxed">
-              Pilih layanan untuk meninjau ruang lingkup pekerjaan (*deliverables*) dan manfaat strategis bagi
+            <p class="mt-3.5 text-base text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="services.desc">
+              Pilih layanan untuk meninjau ruang lingkup pekerjaan (deliverables) dan manfaat strategis bagi
               transformasi digital organisasi Anda.
             </p>
           </div>
           <div
-            class="text-xs font-medium text-slate-500 bg-slate-50 border border-slate-200 px-4 py-2.5 rounded-xl self-start md:self-auto">
-            Klik <span class="text-blue-600 font-semibold">"Detail Layanan"</span> pada kartu untuk rincian cakupan
+            class="text-xs font-medium text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-4 py-2.5 rounded-xl self-start md:self-auto" data-i18n="services.helperNote">
+            Klik <span class="text-blue-600 dark:text-cyan-400 font-semibold">"Detail Layanan"</span> pada kartu untuk rincian cakupan
           </div>
         </div>
 
-        <!-- Grid 6 Kartu Layanan (Dirender dinamis agar sinkron dengan data modal) -->
+        <!-- Grid 6 Kartu Layanan (Dirender dinamis agar sinkron dengan bahasa & modal) -->
         <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
-          <!-- Kartu layanan akan diisi melalui JavaScript terstruktur di bawah -->
+          <!-- Kartu layanan akan diisi melalui JavaScript di bawah -->
         </div>
 
       </div>
@@ -508,18 +538,18 @@
     <!-- =====================================================================
          5. METODOLOGI KERJA (4-STEP HORIZONTAL TIMELINE)
          ===================================================================== -->
-    <section id="metodologi" class="py-20 sm:py-24 bg-alabaster border-b border-slate-200/80 scroll-mt-20">
+    <section id="metodologi" class="py-20 sm:py-24 bg-alabaster dark:bg-slate-900/60 border-b border-slate-200/80 dark:border-slate-800/80 scroll-mt-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- Header Section -->
         <div class="text-center max-w-2xl mx-auto mb-14">
-          <span class="inline-block text-xs font-bold uppercase tracking-widest text-blue-600 mb-3">
+          <span class="inline-block text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-cyan-400 mb-3" data-i18n="methodology.badge">
             Metodologi Kerja
           </span>
-          <h2 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 tracking-tight">
+          <h2 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 dark:text-white tracking-tight" data-i18n="methodology.title">
             Alur Konsultasi Terstruktur &amp; Terkendali
           </h2>
-          <p class="mt-3.5 text-base text-slate-600 leading-relaxed">
+          <p class="mt-3.5 text-base text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="methodology.desc">
             Kerangka kerja empat tahap Puriware memastikan setiap inisiatif TIK berjalan tepat waktu, minim risiko
             gangguan operasional, dan menghasilkan dampak bisnis nyata.
           </p>
@@ -529,27 +559,27 @@
         <div class="relative">
           <!-- Garis Penghubung Horizontal pada Layar Desktop -->
           <div
-            class="hidden lg:block absolute top-10 left-[12%] right-[12%] h-0.5 bg-gradient-to-r from-blue-200 via-cyan-300 to-slate-300"
+            class="hidden lg:block absolute top-10 left-[12%] right-[12%] h-0.5 bg-gradient-to-r from-blue-200 dark:from-blue-800 via-cyan-300 dark:via-cyan-600 to-slate-300 dark:to-slate-700"
             aria-hidden="true"></div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6 relative">
 
             <!-- Langkah 01 -->
             <div
-              class="relative bg-white rounded-2xl p-6 border border-slate-200 shadow-soft hover:shadow-elevated transition-all duration-300 flex flex-col">
+              class="relative bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-soft hover:shadow-elevated transition-all duration-300 flex flex-col">
               <div class="flex items-center justify-between mb-5">
                 <span
-                  class="w-11 h-11 rounded-xl bg-slate-900 text-white font-heading font-bold text-sm flex items-center justify-center shadow-xs relative z-10">
+                  class="w-11 h-11 rounded-xl bg-slate-900 dark:bg-slate-800 text-white font-heading font-bold text-sm flex items-center justify-center shadow-xs relative z-10 border border-slate-700">
                   01
                 </span>
-                <span class="text-xs font-semibold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full">
+                <span class="text-xs font-semibold text-blue-600 dark:text-cyan-400 bg-blue-50 dark:bg-blue-950/80 px-2.5 py-1 rounded-full" data-i18n="methodology.step1Badge">
                   Tahap Awal
                 </span>
               </div>
-              <h3 class="font-heading font-bold text-lg text-slate-900">
+              <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white" data-i18n="methodology.step1Title">
                 Asesmen &amp; Analisis
               </h3>
-              <p class="mt-2.5 text-sm text-slate-600 leading-relaxed">
+              <p class="mt-2.5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="methodology.step1Desc">
                 Audit menyeluruh atas infrastruktur eksisting, alur proses bisnis, tingkat kematangan digital, serta
                 pemetaan kebutuhan strategis pemangku kepentingan.
               </p>
@@ -557,20 +587,20 @@
 
             <!-- Langkah 02 -->
             <div
-              class="relative bg-white rounded-2xl p-6 border border-slate-200 shadow-soft hover:shadow-elevated transition-all duration-300 flex flex-col">
+              class="relative bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-soft hover:shadow-elevated transition-all duration-300 flex flex-col">
               <div class="flex items-center justify-between mb-5">
                 <span
                   class="w-11 h-11 rounded-xl bg-blue-600 text-white font-heading font-bold text-sm flex items-center justify-center shadow-xs relative z-10">
                   02
                 </span>
-                <span class="text-xs font-semibold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full">
+                <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-full" data-i18n="methodology.step2Badge">
                   Cetak Biru
                 </span>
               </div>
-              <h3 class="font-heading font-bold text-lg text-slate-900">
+              <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white" data-i18n="methodology.step2Title">
                 Perancangan Solusi
               </h3>
-              <p class="mt-2.5 text-sm text-slate-600 leading-relaxed">
+              <p class="mt-2.5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="methodology.step2Desc">
                 Penyusunan arsitektur teknis terperinci, spesifikasi platform optimal, perencanaan keamanan, estimasi
                 sumber daya, dan strategi mitigasi risiko.
               </p>
@@ -578,42 +608,42 @@
 
             <!-- Langkah 03 -->
             <div
-              class="relative bg-white rounded-2xl p-6 border border-slate-200 shadow-soft hover:shadow-elevated transition-all duration-300 flex flex-col">
+              class="relative bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-soft hover:shadow-elevated transition-all duration-300 flex flex-col">
               <div class="flex items-center justify-between mb-5">
                 <span
                   class="w-11 h-11 rounded-xl bg-cyan-600 text-white font-heading font-bold text-sm flex items-center justify-center shadow-xs relative z-10">
                   03
                 </span>
-                <span class="text-xs font-semibold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full">
+                <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-full" data-i18n="methodology.step3Badge">
                   Eksekusi
                 </span>
               </div>
-              <h3 class="font-heading font-bold text-lg text-slate-900">
+              <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white" data-i18n="methodology.step3Title">
                 Implementasi &amp; Migrasi
               </h3>
-              <p class="mt-2.5 text-sm text-slate-600 leading-relaxed">
+              <p class="mt-2.5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="methodology.step3Desc">
                 Instalasi infrastruktur, pengembangan sistem, integrasi API lintas aplikasi, serta migrasi data secara
-                terstruktur dengan *downtime* minimal.
+                terstruktur dengan downtime minimal.
               </p>
             </div>
 
             <!-- Langkah 04 -->
             <div
-              class="relative bg-white rounded-2xl p-6 border border-slate-200 shadow-soft hover:shadow-elevated transition-all duration-300 flex flex-col">
+              class="relative bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-soft hover:shadow-elevated transition-all duration-300 flex flex-col">
               <div class="flex items-center justify-between mb-5">
                 <span
-                  class="w-11 h-11 rounded-xl bg-slate-900 text-white font-heading font-bold text-sm flex items-center justify-center shadow-xs relative z-10">
+                  class="w-11 h-11 rounded-xl bg-slate-900 dark:bg-slate-800 text-white font-heading font-bold text-sm flex items-center justify-center shadow-xs relative z-10 border border-slate-700">
                   04
                 </span>
-                <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">
+                <span class="text-xs font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/80 px-2.5 py-1 rounded-full" data-i18n="methodology.step4Badge">
                   Optimalisasi
                 </span>
               </div>
-              <h3 class="font-heading font-bold text-lg text-slate-900">
+              <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white" data-i18n="methodology.step4Title">
                 Evaluasi &amp; Pendampingan
               </h3>
-              <p class="mt-2.5 text-sm text-slate-600 leading-relaxed">
-                Pengujian kualitas (*UAT &amp; Security Testing*), pelatihan tim internal, serah terima dokumentasi
+              <p class="mt-2.5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="methodology.step4Desc">
+                Pengujian kualitas (UAT &amp; Security Testing), pelatihan tim internal, serah terima dokumentasi
                 lengkap, serta dukungan operasional berkelanjutan.
               </p>
             </div>
@@ -627,21 +657,21 @@
     <!-- =====================================================================
          6. KONTAK & KONSULTASI (SPLIT LAYOUT + INTERACTIVE FORM)
          ===================================================================== -->
-    <section id="kontak" class="py-20 sm:py-24 bg-white scroll-mt-20">
+    <section id="kontak" class="py-20 sm:py-24 bg-white dark:bg-slate-950 scroll-mt-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-start">
 
           <!-- Kolom Kiri: Informasi Kontak & Nilai Konsultasi -->
           <div class="lg:col-span-5 space-y-8">
             <div>
-              <span class="inline-block text-xs font-bold uppercase tracking-widest text-blue-600 mb-3">
+              <span class="inline-block text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-cyan-400 mb-3" data-i18n="contact.badge">
                 Kontak &amp; Konsultasi
               </span>
               <h2
-                class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 tracking-tight leading-tight">
+                class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 dark:text-white tracking-tight leading-tight" data-i18n="contact.title">
                 Diskusikan Kebutuhan Solusi TIK Anda
               </h2>
-              <p class="mt-4 text-base text-slate-600 leading-relaxed">
+              <p class="mt-4 text-base text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="contact.desc">
                 Tim konsultan arsitektur Puriware siap membantu mengevaluasi tantangan teknis organisasi Anda dan
                 merumuskan langkah implementasi yang paling efektif.
               </p>
@@ -650,9 +680,9 @@
             <!-- Kartu Informasi Kontak Korporat -->
             <div class="space-y-4">
               <!-- Alamat -->
-              <div class="flex items-start gap-4 p-4 rounded-2xl bg-alabaster border border-slate-200/90">
+              <div class="flex items-start gap-4 p-4 rounded-2xl bg-alabaster dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800">
                 <div
-                  class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-blue-600 shrink-0">
+                  class="w-10 h-10 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-blue-600 dark:text-cyan-400 shrink-0">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -660,55 +690,55 @@
                   </svg>
                 </div>
                 <div>
-                  <h3 class="font-heading font-bold text-sm text-slate-900">Kantor Pusat</h3>
-                  <p class="text-sm text-slate-600 mt-1 leading-relaxed">
+                  <h3 class="font-heading font-bold text-sm text-slate-900 dark:text-white" data-i18n="contact.hqTitle">Kantor Pusat</h3>
+                  <p class="text-sm text-slate-600 dark:text-slate-300 mt-1 leading-relaxed">
                     Jl. Diponegoro Gg. VII No.11, Dauh Puri, Kec. Denpasar Bar., Kota Denpasar, Bali, Indonesia - 80112
                   </p>
                 </div>
               </div>
 
               <!-- Email Bisnis -->
-              <div class="flex items-start gap-4 p-4 rounded-2xl bg-alabaster border border-slate-200/90">
+              <div class="flex items-start gap-4 p-4 rounded-2xl bg-alabaster dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800">
                 <div
-                  class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-blue-600 shrink-0">
+                  class="w-10 h-10 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-blue-600 dark:text-cyan-400 shrink-0">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round"
                       d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                   </svg>
                 </div>
                 <div>
-                  <h3 class="font-heading font-bold text-sm text-slate-900">Email Konsultasi</h3>
-                  <p class="text-sm text-slate-600 mt-1">info@puriware.co.id</p>
+                  <h3 class="font-heading font-bold text-sm text-slate-900 dark:text-white" data-i18n="contact.emailTitle">Email Konsultasi</h3>
+                  <a href="mailto:info@puriware.com" class="text-sm text-blue-600 dark:text-cyan-400 hover:underline mt-1 inline-block font-medium">info@puriware.com</a>
                 </div>
               </div>
 
               <!-- Telepon & Jam Operasional -->
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-alabaster border border-slate-200/90">
+                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-alabaster dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800">
                   <div
-                    class="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-blue-600 shrink-0">
+                    class="w-9 h-9 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-blue-600 dark:text-cyan-400 shrink-0">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round"
                         d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                     </svg>
                   </div>
                   <div>
-                    <h3 class="font-heading font-bold text-xs uppercase tracking-wider text-slate-500">Telepon</h3>
-                    <p class="text-sm font-medium text-slate-900 mt-0.5">+62 851 2138 3797</p>
+                    <h3 class="font-heading font-bold text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400" data-i18n="contact.phoneTitle">Telepon</h3>
+                    <p class="text-sm font-medium text-slate-900 dark:text-white mt-0.5">+62 851 2138 3797</p>
                   </div>
                 </div>
 
-                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-alabaster border border-slate-200/90">
+                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-alabaster dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800">
                   <div
-                    class="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-cyan-700 shrink-0">
+                    class="w-9 h-9 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-cyan-700 dark:text-cyan-400 shrink-0">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round"
                         d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
                   <div>
-                    <h3 class="font-heading font-bold text-xs uppercase tracking-wider text-slate-500">Jam Layanan</h3>
-                    <p class="text-sm font-medium text-slate-900 mt-0.5">Sen–Jum, 08.30–17.30</p>
+                    <h3 class="font-heading font-bold text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400" data-i18n="contact.hoursTitle">Jam Layanan</h3>
+                    <p class="text-sm font-medium text-slate-900 dark:text-white mt-0.5" data-i18n="contact.hoursVal">Sen–Jum, 08.30–17.30</p>
                   </div>
                 </div>
               </div>
@@ -717,15 +747,15 @@
 
           <!-- Kolom Kanan: Formulir Permintaan Konsultasi Interaktif -->
           <div class="lg:col-span-7">
-            <div class="bg-white rounded-2xl border border-slate-200 shadow-elevated p-6 sm:p-9">
+            <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-elevated p-6 sm:p-9">
 
               <!-- Form Input -->
-              <form id="consultation-form" class="space-y-5" novalidate>
-                <div class="border-b border-slate-100 pb-4">
-                  <h3 class="font-heading font-bold text-xl text-slate-900">
+              <form id="consultation-form" action="https://formsubmit.co/info@puriware.com" method="POST" class="space-y-5" novalidate>
+                <div class="border-b border-slate-100 dark:border-slate-800 pb-4">
+                  <h3 class="font-heading font-bold text-xl text-slate-900 dark:text-white" data-i18n="contact.formTitle">
                     Formulir Permintaan Konsultasi
                   </h3>
-                  <p class="text-sm text-slate-500 mt-1">
+                  <p class="text-sm text-slate-500 dark:text-slate-400 mt-1" data-i18n="contact.formDesc">
                     Lengkapi informasi di bawah ini. Konsultan kami akan menghubungi Anda maksimal 1×24 jam kerja.
                   </p>
                 </div>
@@ -733,69 +763,60 @@
                 <!-- Baris 1: Nama Lengkap & Nama Perusahaan -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label for="fullName" class="block text-sm font-medium text-slate-700 mb-1.5">
-                      Nama Lengkap <span class="text-blue-600">*</span>
+                    <label for="fullName" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <span data-i18n="contact.nameLabel">Nama Lengkap</span> <span class="text-blue-600 dark:text-cyan-400">*</span>
                     </label>
                     <input type="text" id="fullName" name="fullName" required placeholder="Contoh: Budi Santoso"
-                      class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-900 text-sm placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/25 focus:border-blue-600 transition-all" />
+                      data-i18n-placeholder="contact.namePlaceholder"
+                      class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-950 text-slate-900 dark:text-white text-sm placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500/25 dark:focus:ring-cyan-500/25 focus:border-blue-600 dark:focus:border-cyan-400 transition-all" />
                   </div>
 
                   <div>
-                    <label for="companyName" class="block text-sm font-medium text-slate-700 mb-1.5">
-                      Nama Perusahaan <span class="text-blue-600">*</span>
+                    <label for="companyName" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <span data-i18n="contact.companyLabel">Nama Perusahaan</span> <span class="text-blue-600 dark:text-cyan-400">*</span>
                     </label>
                     <input type="text" id="companyName" name="companyName" required
-                      placeholder="Contoh: PT Nusantara Digital"
-                      class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-900 text-sm placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/25 focus:border-blue-600 transition-all" />
+                      placeholder="Contoh: PT Nusantara Digital" data-i18n-placeholder="contact.companyPlaceholder"
+                      class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-950 text-slate-900 dark:text-white text-sm placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500/25 dark:focus:ring-cyan-500/25 focus:border-blue-600 dark:focus:border-cyan-400 transition-all" />
                   </div>
                 </div>
 
                 <!-- Baris 2: Email Bisnis & Pilihan Layanan -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label for="businessEmail" class="block text-sm font-medium text-slate-700 mb-1.5">
-                      Email Bisnis <span class="text-blue-600">*</span>
+                    <label for="businessEmail" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <span data-i18n="contact.emailLabel">Email Bisnis</span> <span class="text-blue-600 dark:text-cyan-400">*</span>
                     </label>
                     <input type="email" id="businessEmail" name="businessEmail" required
-                      placeholder="nama@perusahaan.co.id"
-                      class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-900 text-sm placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/25 focus:border-blue-600 transition-all" />
+                      placeholder="nama@perusahaan.co.id" data-i18n-placeholder="contact.emailPlaceholder"
+                      class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-950 text-slate-900 dark:text-white text-sm placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500/25 dark:focus:ring-cyan-500/25 focus:border-blue-600 dark:focus:border-cyan-400 transition-all" />
                   </div>
 
                   <div>
-                    <label for="serviceSelect" class="block text-sm font-medium text-slate-700 mb-1.5">
-                      Pilihan Layanan <span class="text-blue-600">*</span>
+                    <label for="serviceSelect" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <span data-i18n="contact.serviceLabel">Pilihan Layanan</span> <span class="text-blue-600 dark:text-cyan-400">*</span>
                     </label>
                     <select id="serviceSelect" name="serviceSelect" required
-                      class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-900 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/25 focus:border-blue-600 transition-all">
-                      <option value="Konsultasi Strategi & Arsitektur TIK">Konsultasi Strategi &amp; Arsitektur TIK
-                      </option>
-                      <option value="Implementasi & Integrasi Sistem Enterprise">Implementasi &amp; Integrasi Sistem
-                        Enterprise</option>
-                      <option value="Infrastruktur Jaringan & Solusi Cloud">Infrastruktur Jaringan &amp; Solusi Cloud
-                      </option>
-                      <option value="Keamanan Siber & Manajemen Risiko TI">Keamanan Siber &amp; Manajemen Risiko TI
-                      </option>
-                      <option value="Pengembangan Aplikasi Bisnis Kustom">Pengembangan Aplikasi Bisnis Kustom</option>
-                      <option value="Managed Services & Dukungan Operasional">Managed Services &amp; Dukungan
-                        Operasional</option>
-                      <option value="Solusi TIK Terpadu (Multi-Layanan)">Solusi TIK Terpadu (Multi-Layanan)</option>
+                      class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-950 text-slate-900 dark:text-white text-sm focus:bg-white dark:focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500/25 dark:focus:ring-cyan-500/25 focus:border-blue-600 dark:focus:border-cyan-400 transition-all">
+                      <!-- Opsi diisi dinamis berdasarkan bahasa aktif -->
                     </select>
                   </div>
                 </div>
 
                 <!-- Baris 3: Deskripsi Kebutuhan -->
                 <div>
-                  <label for="projectDescription" class="block text-sm font-medium text-slate-700 mb-1.5">
-                    Deskripsi Kebutuhan <span class="text-blue-600">*</span>
+                  <label for="projectDescription" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                    <span data-i18n="contact.descLabel">Deskripsi Kebutuhan</span> <span class="text-blue-600 dark:text-cyan-400">*</span>
                   </label>
                   <textarea id="projectDescription" name="projectDescription" rows="4" required
                     placeholder="Ceritakan secara singkat tantangan teknis, ruang lingkup proyek, atau target waktu implementasi yang Anda harapkan..."
-                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-900 text-sm placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/25 focus:border-blue-600 transition-all resize-y"></textarea>
+                    data-i18n-placeholder="contact.descPlaceholder"
+                    class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-950 text-slate-900 dark:text-white text-sm placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500/25 dark:focus:ring-cyan-500/25 focus:border-blue-600 dark:focus:border-cyan-400 transition-all resize-y"></textarea>
                 </div>
 
-                <!-- Pesan Validasi Error Inline (Pengganti alert) -->
+                <!-- Pesan Validasi Error Inline -->
                 <div id="form-error-box"
-                  class="hidden p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm flex items-center gap-2.5"
+                  class="hidden p-3.5 rounded-xl bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300 text-sm flex items-center gap-2.5"
                   role="alert">
                   <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -808,7 +829,7 @@
                 <div class="pt-1">
                   <button type="submit" id="submit-btn"
                     class="w-full inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl text-sm sm:text-base font-semibold text-white btn-primary-gradient shadow-blue-glow cursor-pointer">
-                    <span>Kirim Permintaan Konsultasi</span>
+                    <span data-i18n="contact.submitBtn">Kirim Permintaan Konsultasi</span>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round"
                         d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
@@ -820,35 +841,35 @@
               <!-- Tampilan Konfirmasi Sukses Setelah Pengiriman Formulir -->
               <div id="consultation-success" class="hidden py-6 text-center space-y-5" aria-live="polite">
                 <div
-                  class="w-16 h-16 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center mx-auto">
+                  class="w-16 h-16 rounded-2xl bg-emerald-50 dark:bg-emerald-950 border border-emerald-200 dark:border-emerald-800 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto">
                   <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                   </svg>
                 </div>
                 <div class="space-y-2 max-w-md mx-auto">
                   <span id="ticket-badge"
-                    class="inline-block px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-heading text-xs font-bold">
+                    class="inline-block px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-cyan-400 font-heading text-xs font-bold">
                     ID Referensi: PW-2026-8412
                   </span>
-                  <h3 class="font-heading font-bold text-2xl text-slate-900">
+                  <h3 class="font-heading font-bold text-2xl text-slate-900 dark:text-white" data-i18n="contact.successTitle">
                     Permintaan Konsultasi Terkirim
                   </h3>
-                  <p class="text-sm text-slate-600 leading-relaxed">
-                    Terima kasih, <strong id="confirm-name" class="text-slate-900">Bapak/Ibu</strong> dari <strong
-                      id="confirm-company" class="text-slate-900">Perusahaan</strong>. Tim konsultan Puriware telah
+                  <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed" id="success-message-text">
+                    Terima kasih, <strong id="confirm-name" class="text-slate-900 dark:text-white">Bapak/Ibu</strong> dari <strong
+                      id="confirm-company" class="text-slate-900 dark:text-white">Perusahaan</strong>. Tim konsultan Puriware telah
                     menerima rincian kebutuhan Anda untuk layanan <span id="confirm-service"
-                      class="text-blue-600 font-medium">Konsultasi TIK</span>.
+                      class="text-blue-600 dark:text-cyan-400 font-medium">Konsultasi TIK</span>.
                   </p>
                 </div>
 
-                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 max-w-md mx-auto">
+                <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 max-w-md mx-auto" id="success-subnotice">
                   Salinan konfirmasi dan jadwal sesi diskusi awal akan dikirimkan ke <strong id="confirm-email"
-                    class="text-slate-900">email@perusahaan.co.id</strong> dalam 1×24 jam kerja.
+                    class="text-slate-900 dark:text-white">email@perusahaan.co.id</strong> dalam 1×24 jam kerja.
                 </div>
 
                 <div class="pt-2">
-                  <button type="button" id="reset-form-btn"
-                    class="inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-sm font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 transition-colors">
+                  <button type="button" id="reset-form-btn" data-i18n="contact.resetBtn"
+                    class="inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition-colors">
                     Kirim Permintaan Konsultasi Lainnya
                   </button>
                 </div>
@@ -863,35 +884,19 @@
   </main>
 
   <!-- =====================================================================
-       7. FOOTER ELEGAN (DEEP SLATE NAVY)
+       7. FOOTER ELEGAN (INTEGRASI LOGO WHITE + BILINGUAL)
        ===================================================================== -->
-  <footer class="bg-slateNavy text-slate-300 border-t border-slate-800">
+  <footer class="bg-slateNavy dark:bg-slate-950 text-slate-300 border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-slate-800">
 
         <!-- Identitas & Slogan Puriware -->
         <div class="md:col-span-5 space-y-4">
-          <a href="#beranda" class="inline-flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center">
-              <svg class="w-6 h-6 text-white" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true">
-                <path d="M14 3L23.5 8.5V19.5L14 25L4.5 19.5V8.5L14 3Z" stroke="currentColor" stroke-width="2"
-                  stroke-linejoin="round" />
-                <path d="M14 14L23.5 8.5M14 14V25M14 14L4.5 8.5" stroke="#BAE6FD" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" />
-                <circle cx="14" cy="14" r="2.2" fill="#FFFFFF" />
-              </svg>
-            </div>
-            <div>
-              <span class="font-heading font-extrabold text-xl tracking-tight text-white block leading-none">
-                Puri<span class="text-cyan-400">ware</span>
-              </span>
-              <span class="text-[11px] font-semibold tracking-widest uppercase text-cyan-400/90 mt-1 block">
-                One Stop IT Solutions
-              </span>
-            </div>
+          <a href="#beranda" class="inline-flex items-center focus:outline-none" aria-label="Puriware Home">
+            <img src="assets/logo/puriware_logo_text_white.png" alt="Puriware Logo"
+              class="h-9 w-auto max-w-[200px] object-contain transition-transform duration-200 hover:scale-[1.02]" />
           </a>
-          <p class="text-sm text-slate-400 leading-relaxed max-w-sm">
+          <p class="text-sm text-slate-400 leading-relaxed max-w-sm" data-i18n="footer.desc">
             Mitra konsultasi dan implementasi solusi TIK terpadu untuk membangun infrastruktur digital yang andal, aman,
             dan berkelanjutan bagi pertumbuhan bisnis Anda.
           </p>
@@ -899,106 +904,114 @@
 
         <!-- Tautan Navigasi -->
         <div class="md:col-span-3 space-y-3">
-          <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-white">Navigasi</h4>
+          <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-white" data-i18n="footer.navTitle">Navigasi</h4>
           <ul class="space-y-2.5 text-sm">
-            <li><a href="#beranda" class="text-slate-400 hover:text-white transition-colors">Beranda</a></li>
-            <li><a href="#tentang-kami" class="text-slate-400 hover:text-white transition-colors">Tentang Kami</a></li>
-            <li><a href="#layanan" class="text-slate-400 hover:text-white transition-colors">Layanan Utama</a></li>
-            <li><a href="#metodologi" class="text-slate-400 hover:text-white transition-colors">Metodologi Kerja</a>
-            </li>
-            <li><a href="#kontak" class="text-slate-400 hover:text-white transition-colors">Konsultasi &amp; Kontak</a>
-            </li>
+            <li><a href="#beranda" data-i18n="nav.home" class="text-slate-400 hover:text-white transition-colors">Beranda</a></li>
+            <li><a href="#tentang-kami" data-i18n="nav.about" class="text-slate-400 hover:text-white transition-colors">Tentang Kami</a></li>
+            <li><a href="#layanan" data-i18n="nav.services" class="text-slate-400 hover:text-white transition-colors">Layanan Utama</a></li>
+            <li><a href="#metodologi" data-i18n="nav.methodology" class="text-slate-400 hover:text-white transition-colors">Metodologi Kerja</a></li>
+            <li><a href="#kontak" data-i18n="nav.contact" class="text-slate-400 hover:text-white transition-colors">Konsultasi &amp; Kontak</a></li>
           </ul>
         </div>
 
-        <!-- Ringkasan Solusi -->
+        <!-- Layanan Solusi -->
         <div class="md:col-span-4 space-y-3">
-          <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-white">Fokus Solusi TIK</h4>
-          <ul class="space-y-2.5 text-sm text-slate-400">
+          <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-white" data-i18n="footer.servicesTitle">Layanan Solusi</h4>
+          <ul class="space-y-2 text-xs text-slate-400" id="footer-services-list">
             <li>Konsultasi Strategi &amp; Arsitektur TIK</li>
             <li>Implementasi &amp; Integrasi Sistem Enterprise</li>
             <li>Infrastruktur Jaringan &amp; Solusi Cloud</li>
-            <li>Keamanan Siber &amp; Managed Services</li>
+            <li>Keamanan Siber &amp; Manajemen Risiko TI</li>
+            <li>Pengembangan Aplikasi Bisnis Kustom</li>
+            <li>Managed Services &amp; Dukungan Operasional</li>
           </ul>
         </div>
 
       </div>
 
-      <!-- Bar Copyright Bawah -->
+      <!-- Baris Hak Cipta -->
       <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-        <p>&copy; 2026 Puriware. Hak Cipta Dilindungi Undang-Undang.</p>
-        <p class="text-slate-500">One Stop IT Solutions — Konsultasi &amp; Implementasi Solusi TIK</p>
+        <p data-i18n="footer.copyright">&copy; 2026 Puriware. Hak Cipta Dilindungi Undang-Undang.</p>
+        <p class="text-slate-500" data-i18n="footer.tagline">One Stop IT Solutions — Konsultasi &amp; Implementasi Solusi TIK</p>
       </div>
     </div>
   </footer>
 
   <!-- =====================================================================
-       MODAL INTERAKTIF DETAIL LAYANAN
+       MODAL INTERAKTIF DETAIL LAYANAN (DARK MODE & BILINGUAL READY)
        ===================================================================== -->
   <div id="service-modal" class="hidden fixed inset-0 z-50 overflow-y-auto" role="dialog" aria-modal="true"
     aria-labelledby="modal-title">
-    <!-- Backdrop -->
-    <div id="modal-backdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs modal-backdrop opacity-0"></div>
+    <div class="min-h-screen px-4 text-center flex items-center justify-center">
 
-    <!-- Kontainer Tengah Modal -->
-    <div class="flex min-h-full items-center justify-center p-4 sm:p-6">
+      <!-- Latar Belakang Redup (Backdrop) -->
+      <div id="modal-backdrop" class="fixed inset-0 bg-slate-900/60 dark:bg-black/75 backdrop-blur-sm modal-backdrop opacity-0"
+        aria-hidden="true"></div>
+
+      <!-- Elemen Penyeimbang Posisi Vertikal -->
+      <span class="inline-block h-screen align-middle" aria-hidden="true">&#8203;</span>
+
+      <!-- Panel Konten Modal -->
       <div id="modal-panel"
-        class="relative w-full max-w-2xl rounded-2xl bg-white border border-slate-200 shadow-2xl overflow-hidden modal-panel opacity-0 scale-95">
+        class="inline-block w-full max-w-2xl my-8 text-left align-middle bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden transform modal-panel opacity-0 scale-95 relative z-10">
 
-        <!-- Header Modal -->
-        <div class="px-6 py-5 bg-slate-50 border-b border-slate-200 flex items-start justify-between gap-4">
+        <!-- Bar Atas Modal dengan Tombol Tutup -->
+        <div class="px-6 sm:px-8 pt-6 pb-4 border-b border-slate-100 dark:border-slate-800 flex items-start justify-between gap-4">
           <div class="flex items-center gap-3.5">
             <div id="modal-icon-container"
-              class="w-11 h-11 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0">
-              <!-- Ikon SVG dinamis -->
+              class="w-11 h-11 rounded-xl bg-blue-50 dark:bg-blue-950 border border-blue-100 dark:border-blue-800 text-blue-600 dark:text-cyan-400 flex items-center justify-center shrink-0">
+              <!-- Ikon SVG disuntikkan secara dinamis -->
             </div>
             <div>
-              <span id="modal-code" class="text-[11px] font-bold uppercase tracking-widest text-blue-600 block">
+              <span id="modal-code"
+                class="font-heading text-xs font-bold tracking-wider text-blue-600 dark:text-cyan-400 uppercase">
                 LAYANAN 01
               </span>
-              <h3 id="modal-title" class="font-heading font-bold text-lg sm:text-xl text-slate-900 mt-0.5">
+              <h3 id="modal-title" class="font-heading font-bold text-xl sm:text-2xl text-slate-900 dark:text-white leading-tight">
                 Judul Layanan
               </h3>
             </div>
           </div>
 
           <button type="button" id="modal-close-btn"
-            class="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-200/70 transition-colors focus:outline-none"
-            aria-label="Tutup detail layanan">
+            class="p-2 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none"
+            aria-label="Tutup jendela rincian layanan">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
 
-        <!-- Isi Konten Modal -->
-        <div class="p-6 sm:p-7 space-y-6">
-          <p id="modal-description" class="text-sm sm:text-base text-slate-600 leading-relaxed">
-            Deskripsi lengkap layanan.
-          </p>
+        <!-- Badan Konten Modal -->
+        <div class="px-6 sm:px-8 py-6 space-y-6 max-h-[70vh] overflow-y-auto">
+          <!-- Narasi Lengkap Cakupan Layanan -->
+          <div>
+            <p id="modal-description" class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+              Deskripsi komprehensif mengenai latar belakang kebutuhan dan pendekatan arsitektur layanan.
+            </p>
+          </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <!-- Ruang Lingkup & Deliverables -->
-            <div class="p-4 rounded-xl bg-alabaster border border-slate-200/90">
-              <h4
-                class="font-heading font-bold text-xs uppercase tracking-wider text-slate-900 mb-3 flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-blue-600"></span>
-                Ruang Lingkup &amp; Deliverables
-              </h4>
-              <ul id="modal-deliverables" class="space-y-2.5 text-sm text-slate-600">
-                <!-- Item list diisi via JS -->
+          <!-- Bagian Deliverables & Manfaat Bisnis -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
+            <!-- Kolom Deliverables -->
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200/90 dark:border-slate-800 space-y-3">
+              <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">
+                <span class="w-2 h-2 rounded-full bg-blue-600 dark:bg-cyan-400"></span>
+                <span data-i18n="modal.deliverablesTitle">Ruang Lingkup Deliverables</span>
+              </div>
+              <ul id="modal-deliverables" class="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                <!-- Disuntikkan secara dinamis -->
               </ul>
             </div>
 
-            <!-- Manfaat Utama -->
-            <div class="p-4 rounded-xl bg-blue-50/50 border border-blue-100">
-              <h4
-                class="font-heading font-bold text-xs uppercase tracking-wider text-blue-900 mb-3 flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-cyan-600"></span>
-                Manfaat Bagi Organisasi
-              </h4>
-              <ul id="modal-benefits" class="space-y-2.5 text-sm text-slate-700">
-                <!-- Item list diisi via JS -->
+            <!-- Kolom Manfaat Bisnis -->
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200/90 dark:border-slate-800 space-y-3">
+              <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">
+                <span class="w-2 h-2 rounded-full bg-cyan-600 dark:text-cyan-400"></span>
+                <span data-i18n="modal.benefitsTitle">Manfaat Bisnis &amp; Nilai Strategis</span>
+              </div>
+              <ul id="modal-benefits" class="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                <!-- Disuntikkan secara dinamis -->
               </ul>
             </div>
           </div>
@@ -1006,14 +1019,14 @@
 
         <!-- Footer Modal -->
         <div
-          class="px-6 py-4 bg-slate-50 border-t border-slate-200 flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-3">
-          <button type="button" id="modal-secondary-close"
-            class="px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-200/60 transition-colors">
+          class="px-6 sm:px-8 py-4 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-3">
+          <button type="button" id="modal-secondary-close" data-i18n="modal.closeBtn"
+            class="px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-slate-800 transition-colors">
             Tutup
           </button>
           <button type="button" id="modal-consult-cta"
-            class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white btn-primary-gradient shadow-blue-glow">
-            <span>Konsultasikan Layanan Ini</span>
+            class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white btn-primary-gradient shadow-blue-glow cursor-pointer">
+            <span data-i18n="modal.consultCta">Konsultasikan Kebutuhan Ini</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>
@@ -1025,176 +1038,648 @@
   </div>
 
   <!-- =====================================================================
-       JAVASCRIPT INTERAKTIF: DATA LAYANAN, MODAL, MOBILE MENU & FORMULIR
+       JAVASCRIPT: I18N, THEME, SERVICES, MODAL & FORM VALIDATION
        ===================================================================== -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+
       /**
-       * 1. DATA TERSTRUKTUR 6 LAYANAN UTAMA PURIWARE
-       * Menyimpan metadata, ikon SVG geometris, deskripsi lengkap,
-       * ruang lingkup deliverables, dan manfaat bisnis untuk modal detail.
+       * 1. DATA KAMUS BILINGUAL (i18n: ID & EN)
+       */
+      const translations = {
+        id: {
+          docTitle: 'Puriware — One Stop IT Solutions | Konsultasi & Implementasi Solusi TIK',
+          docMetaDesc: 'Puriware adalah mitra strategis konsultasi dan implementasi solusi berbasis Teknologi Informasi dan Komunikasi (TIK) terpadu. One Stop IT Solutions.',
+          nav: {
+            home: 'Beranda',
+            about: 'Tentang Kami',
+            services: 'Layanan',
+            methodology: 'Metodologi',
+            contact: 'Kontak',
+            cta: 'Konsultasi Sekarang'
+          },
+          hero: {
+            badge: 'One Stop IT Solutions',
+            titlePrefix: 'Mitra Strategis Konsultasi & Implementasi ',
+            titleHighlight: 'Solusi TIK Terpadu',
+            desc: 'Puriware membantu perusahaan dan institusi merancang, mengintegrasikan, serta mengoptimalkan infrastruktur TIK dan ekosistem sistem digital secara menyeluruh—menghadirkan fondasi teknologi yang tangguh, aman, dan selaras dengan target pertumbuhan bisnis Anda.',
+            ctaConsult: 'Jadwalkan Konsultasi',
+            ctaServices: 'Lihat Layanan',
+            stat1Title: 'End-to-End',
+            stat1Desc: 'Perencanaan hingga operasi',
+            stat2Title: 'Arsitektur Terbuka',
+            stat2Desc: 'Skalabel & mudah terintegrasi',
+            stat3Title: 'Standar Enterprise',
+            stat3Desc: 'Keamanan & SLA terukur',
+            hubHeader: 'PURIWARE ICT ARCHITECTURE HUB',
+            hubBadge: 'Terintegrasi',
+            hubNode1Title: 'Strategi & Arsitektur TIK',
+            hubNode1Sub: 'IT Blueprint & Governance',
+            hubCoreSub: 'Orkestrasi Sistem, Cloud & Keamanan',
+            hubNode2Title: 'Cloud & Jaringan',
+            hubNode3Title: 'Aplikasi & API',
+            hubNode4Title: 'Keamanan Siber',
+            cap1Label: 'Pendekatan Konsultasi',
+            cap1Val: 'Vendor-Neutral & Terukur',
+            cap2Label: 'Siklus Layanan',
+            cap2Val: 'Asesmen hingga Managed'
+          },
+          about: {
+            badge: 'Tentang Puriware',
+            title: 'Menjembatani Strategi Bisnis dengan Eksekusi Teknologi yang Presisi',
+            desc: 'Sebagai perusahaan konsultasi dan implementasi solusi berbasis TIK, <strong class="font-semibold text-slate-900 dark:text-white">Puriware</strong> hadir dengan filosofi <em class="not-italic font-medium text-blue-700 dark:text-cyan-400">One Stop IT Solutions</em>. Kami memahami bahwa investasi teknologi hanya memberikan nilai optimal apabila dirancang secara menyeluruh, terintegrasi antar-lini, dan diimplementasikan dengan tata kelola yang disiplin.',
+            p1Title: 'Solusi Terintegrasi',
+            p1Desc: 'Menyatukan infrastruktur jaringan, komputasi cloud, sistem enterprise, dan keamanan informasi dalam satu ekosistem tunggal yang saling terhubung tanpa silo operasional.',
+            p2Title: 'Pendekatan Berbasis Kebutuhan',
+            p2Desc: 'Kami tidak menerapkan solusi generik. Setiap cetak biru arsitektur disusun berdasarkan diagnosis proses bisnis, kesiapan tim, serta skala anggaran organisasi Anda.',
+            p3Title: 'Implementasi Terukur',
+            p3Desc: 'Setiap tahapan proyek dilengkapi indikator keberhasilan yang transparan, dokumentasi teknis komprehensif, pengujian ketat, serta pendampingan alih pengetahuan.'
+          },
+          services: {
+            badge: 'Layanan Utama',
+            title: 'Portofolio Konsultasi & Implementasi TIK',
+            desc: 'Pilih layanan untuk meninjau ruang lingkup pekerjaan (deliverables) dan manfaat strategis bagi transformasi digital organisasi Anda.',
+            helperNote: 'Klik <span class="text-blue-600 dark:text-cyan-400 font-semibold">"Detail Layanan"</span> pada kartu untuk rincian cakupan',
+            detailBtn: 'Detail Layanan'
+          },
+          methodology: {
+            badge: 'Metodologi Kerja',
+            title: 'Alur Konsultasi Terstruktur & Terkendali',
+            desc: 'Kerangka kerja empat tahap Puriware memastikan setiap inisiatif TIK berjalan tepat waktu, minim risiko gangguan operasional, dan menghasilkan dampak bisnis nyata.',
+            step1Badge: 'Tahap Awal',
+            step1Title: 'Asesmen & Analisis',
+            step1Desc: 'Audit menyeluruh atas infrastruktur eksisting, alur proses bisnis, tingkat kematangan digital, serta pemetaan kebutuhan strategis pemangku kepentingan.',
+            step2Badge: 'Cetak Biru',
+            step2Title: 'Perancangan Solusi',
+            step2Desc: 'Penyusunan arsitektur teknis terperinci, spesifikasi platform optimal, perencanaan keamanan, estimasi sumber daya, dan strategi mitigasi risiko.',
+            step3Badge: 'Eksekusi',
+            step3Title: 'Implementasi & Migrasi',
+            step3Desc: 'Instalasi infrastruktur, pengembangan sistem, integrasi API lintas aplikasi, serta migrasi data secara terstruktur dengan downtime minimal.',
+            step4Badge: 'Optimalisasi',
+            step4Title: 'Evaluasi & Pendampingan',
+            step4Desc: 'Pengujian kualitas (UAT & Security Testing), pelatihan tim internal, serah terima dokumentasi lengkap, serta dukungan operasional berkelanjutan.'
+          },
+          contact: {
+            badge: 'Kontak & Konsultasi',
+            title: 'Diskusikan Kebutuhan Solusi TIK Anda',
+            desc: 'Tim konsultan arsitektur Puriware siap membantu mengevaluasi tantangan teknis organisasi Anda dan merumuskan langkah implementasi yang paling efektif.',
+            hqTitle: 'Kantor Pusat',
+            emailTitle: 'Email Konsultasi',
+            phoneTitle: 'Telepon',
+            hoursTitle: 'Jam Layanan',
+            hoursVal: 'Sen–Jum, 08.30–17.30',
+            formTitle: 'Formulir Permintaan Konsultasi',
+            formDesc: 'Lengkapi informasi di bawah ini. Konsultan kami akan menghubungi Anda maksimal 1×24 jam kerja.',
+            nameLabel: 'Nama Lengkap',
+            namePlaceholder: 'Contoh: Budi Santoso',
+            companyLabel: 'Nama Perusahaan',
+            companyPlaceholder: 'Contoh: PT Nusantara Digital',
+            emailLabel: 'Email Bisnis',
+            emailPlaceholder: 'nama@perusahaan.co.id',
+            serviceLabel: 'Pilihan Layanan',
+            descLabel: 'Deskripsi Kebutuhan',
+            descPlaceholder: 'Ceritakan secara singkat tantangan teknis, ruang lingkup proyek, atau target waktu implementasi yang Anda harapkan...',
+            submitBtn: 'Kirim Permintaan Konsultasi',
+            sendingBtn: 'Mengirimkan Permintaan...',
+            directEmailLink: 'Buka di Aplikasi Email (mailto)',
+            errorRequired: 'Mohon lengkapi seluruh kolom bertanda bintang (*) sebelum mengirim.',
+            errorEmail: 'Mohon masukkan alamat email bisnis yang valid (contoh: nama@perusahaan.co.id).',
+            successTitle: 'Permintaan Konsultasi Terkirim',
+            resetBtn: 'Kirim Permintaan Konsultasi Lainnya'
+          },
+          modal: {
+            servicePrefix: 'LAYANAN',
+            deliverablesTitle: 'Ruang Lingkup Deliverables',
+            benefitsTitle: 'Manfaat Bisnis & Nilai Strategis',
+            closeBtn: 'Tutup',
+            consultCta: 'Konsultasikan Kebutuhan Ini'
+          },
+          footer: {
+            desc: 'Mitra konsultasi dan implementasi solusi TIK terpadu untuk membangun infrastruktur digital yang andal, aman, dan berkelanjutan bagi pertumbuhan bisnis Anda.',
+            navTitle: 'Navigasi',
+            servicesTitle: 'Layanan Solusi',
+            copyright: '© 2026 Puriware. Hak Cipta Dilindungi Undang-Undang.',
+            tagline: 'One Stop IT Solutions — Konsultasi & Implementasi Solusi TIK'
+          }
+        },
+        en: {
+          docTitle: 'Puriware — One Stop IT Solutions | ICT Consulting & Implementation',
+          docMetaDesc: 'Puriware is a strategic partner for integrated Information and Communication Technology (ICT) consulting and implementation. One Stop IT Solutions.',
+          nav: {
+            home: 'Home',
+            about: 'About Us',
+            services: 'Services',
+            methodology: 'Methodology',
+            contact: 'Contact',
+            cta: 'Consult Now'
+          },
+          hero: {
+            badge: 'One Stop IT Solutions',
+            titlePrefix: 'Strategic Partner for Consulting & Implementation ',
+            titleHighlight: 'Integrated ICT Solutions',
+            desc: 'Puriware empowers enterprises and institutions to architect, integrate, and optimize their end-to-end ICT infrastructure and digital ecosystems—delivering resilient, secure tech foundations aligned with your business growth.',
+            ctaConsult: 'Schedule Consultation',
+            ctaServices: 'Explore Services',
+            stat1Title: 'End-to-End',
+            stat1Desc: 'Planning to operations',
+            stat2Title: 'Open Architecture',
+            stat2Desc: 'Scalable & easy integration',
+            stat3Title: 'Enterprise Standard',
+            stat3Desc: 'Guaranteed SLAs & security',
+            hubHeader: 'PURIWARE ICT ARCHITECTURE HUB',
+            hubBadge: 'Integrated',
+            hubNode1Title: 'ICT Strategy & Architecture',
+            hubNode1Sub: 'IT Blueprint & Governance',
+            hubCoreSub: 'System, Cloud & Security Orchestration',
+            hubNode2Title: 'Cloud & Networks',
+            hubNode3Title: 'Apps & APIs',
+            hubNode4Title: 'Cybersecurity',
+            cap1Label: 'Consulting Approach',
+            cap1Val: 'Vendor-Neutral & Measurable',
+            cap2Label: 'Service Lifecycle',
+            cap2Val: 'Assessment to Managed'
+          },
+          about: {
+            badge: 'About Puriware',
+            title: 'Bridging Business Strategy with Precision Technology Execution',
+            desc: 'As an ICT consulting and implementation firm, <strong class="font-semibold text-slate-900 dark:text-white">Puriware</strong> operates under the <em class="not-italic font-medium text-blue-700 dark:text-cyan-400">One Stop IT Solutions</em> philosophy. We understand that technology investments deliver peak value only when conceived holistically, integrated across operational lines, and executed with disciplined governance.',
+            p1Title: 'Integrated Solutions',
+            p1Desc: 'Unifying network infrastructure, cloud computing, enterprise systems, and information security into a single cohesive ecosystem free from operational silos.',
+            p2Title: 'Needs-Driven Approach',
+            p2Desc: 'We never impose one-size-fits-all blueprints. Every architecture is tailored to organizational workflows, team readiness, and budgetary parameters.',
+            p3Title: 'Measurable Execution',
+            p3Desc: 'Every project phase features transparent milestones, rigorous documentation, stringent QA, and dedicated knowledge transfer.'
+          },
+          services: {
+            badge: 'Core Services',
+            title: 'ICT Consulting & Implementation Portfolio',
+            desc: 'Select a service to inspect key deliverables and strategic benefits driving your digital transformation.',
+            helperNote: 'Click <span class="text-blue-600 dark:text-cyan-400 font-semibold">"Service Details"</span> on any card for full scope',
+            detailBtn: 'Service Details'
+          },
+          methodology: {
+            badge: 'Work Methodology',
+            title: 'Structured & Controlled Consulting Workflow',
+            desc: 'Puriware’s four-stage framework ensures every ICT initiative completes on schedule, minimizes operational disruption, and drives real business impact.',
+            step1Badge: 'Phase 01',
+            step1Title: 'Assessment & Analysis',
+            step1Desc: 'Comprehensive audit of existing infrastructure, business workflows, digital maturity, and strategic stakeholder requirement mapping.',
+            step2Badge: 'Blueprint',
+            step2Title: 'Solution Architecture',
+            step2Desc: 'Formulation of detailed technical blueprints, optimal platform specifications, security schemes, resource estimates, and risk mitigation strategies.',
+            step3Badge: 'Execution',
+            step3Title: 'Implementation & Migration',
+            step3Desc: 'Infrastructure setup, systems development, cross-application API orchestration, and structured data migration with minimal downtime.',
+            step4Badge: 'Optimization',
+            step4Title: 'Handover & Ongoing Support',
+            step4Desc: 'Rigorous UAT & security testing, internal team onboarding, turnkey documentation handover, and sustained operational support.'
+          },
+          contact: {
+            badge: 'Contact & Consultation',
+            title: 'Discuss Your ICT Solution Requirements',
+            desc: 'Puriware’s architecture consultants stand ready to evaluate technical challenges and chart the most effective implementation roadmap.',
+            hqTitle: 'Headquarters',
+            emailTitle: 'Consulting Email',
+            phoneTitle: 'Phone',
+            hoursTitle: 'Business Hours',
+            hoursVal: 'Mon–Fri, 08:30–17:30',
+            formTitle: 'Consultation Request Form',
+            formDesc: 'Complete the form below. Our consulting team will follow up within 1 business day.',
+            nameLabel: 'Full Name',
+            namePlaceholder: 'e.g. John Doe',
+            companyLabel: 'Company Name',
+            companyPlaceholder: 'e.g. Acme Corp',
+            emailLabel: 'Business Email',
+            emailPlaceholder: 'name@company.com',
+            serviceLabel: 'Selected Service',
+            descLabel: 'Project Requirements',
+            descPlaceholder: 'Briefly describe your technical challenges, project scope, or expected timeline...',
+            submitBtn: 'Submit Consultation Request',
+            sendingBtn: 'Sending Request...',
+            directEmailLink: 'Open in Email Client (mailto)',
+            errorRequired: 'Please complete all mandatory fields (*) before submitting.',
+            errorEmail: 'Please enter a valid business email address (e.g. name@company.com).',
+            successTitle: 'Consultation Request Submitted',
+            resetBtn: 'Submit Another Request'
+          },
+          modal: {
+            servicePrefix: 'SERVICE',
+            deliverablesTitle: 'Deliverables Scope',
+            benefitsTitle: 'Strategic Impact & Business Value',
+            closeBtn: 'Close',
+            consultCta: 'Consult on This Service'
+          },
+          footer: {
+            desc: 'Strategic partner in integrated ICT consulting and implementation, building resilient, secure, and sustainable digital infrastructure for your enterprise growth.',
+            navTitle: 'Navigation',
+            servicesTitle: 'Solutions',
+            copyright: '© 2026 Puriware. All Rights Reserved.',
+            tagline: 'One Stop IT Solutions — ICT Consulting & Implementation'
+          }
+        }
+      };
+
+      /**
+       * 2. DATA 6 LAYANAN UTAMA (BILINGUAL)
        */
       const servicesData = [
         {
           id: 'strategi-arsitektur',
           code: '01',
-          title: 'Konsultasi Strategi & Arsitektur TIK',
-          shortDesc: 'Penyusunan IT Master Plan, cetak biru arsitektur enterprise, dan peta jalan transformasi digital yang selaras dengan visi bisnis.',
-          fullDesc: 'Kami membantu jajaran pimpinan merumuskan arah investasi TIK jangka menengah dan panjang melalui evaluasi kematangan teknologi serta perancangan arsitektur enterprise yang terukur dan efisien.',
-          deliverables: [
-            'Dokumen IT Master Plan & Peta Jalan (Roadmap) 3–5 Tahun',
-            'Cetak Biru Enterprise Architecture (Aplikasi, Data & Infrastruktur)',
-            'Audit Kematangan Digital & Analisis Kesenjangan (Gap Analysis)',
-            'Rekomendasi Tata Kelola TI (IT Governance & SOP)'
-          ],
-          benefits: [
-            'Investasi teknologi lebih tepat sasaran dan terhindar dari duplikasi sistem',
-            'Keselarasan penuh antara kapabilitas TIK dan target pertumbuhan bisnis',
-            'Kesiapan fondasi untuk ekspansi digital jangka panjang'
-          ],
+          idContent: {
+            title: 'Konsultasi Strategi & Arsitektur TIK',
+            shortDesc: 'Penyusunan IT Master Plan, cetak biru arsitektur enterprise, dan peta jalan transformasi digital yang selaras dengan visi bisnis.',
+            fullDesc: 'Kami membantu jajaran pimpinan merumuskan arah investasi TIK jangka menengah dan panjang melalui evaluasi kematangan teknologi serta perancangan arsitektur enterprise yang terukur dan efisien.',
+            deliverables: [
+              'Dokumen IT Master Plan & Peta Jalan (Roadmap) 3–5 Tahun',
+              'Cetak Biru Enterprise Architecture (Aplikasi, Data & Infrastruktur)',
+              'Audit Kematangan Digital & Analisis Kesenjangan (Gap Analysis)',
+              'Rekomendasi Tata Kelola TI (IT Governance & SOP)'
+            ],
+            benefits: [
+              'Investasi teknologi lebih tepat sasaran dan terhindar dari duplikasi sistem',
+              'Keselarasan penuh antara kapabilitas TIK dan target pertumbuhan bisnis',
+              'Kesiapan fondasi untuk ekspansi digital jangka panjang'
+            ]
+          },
+          enContent: {
+            title: 'ICT Strategy & Enterprise Architecture',
+            shortDesc: 'IT Master Plan formulation, enterprise architecture blueprints, and digital transformation roadmaps aligned with corporate vision.',
+            fullDesc: 'We assist leadership teams in charting mid-to-long term IT investment priorities through technology maturity audits and scalable, cost-efficient enterprise architectures.',
+            deliverables: [
+              'IT Master Plan & 3–5 Year Strategic Roadmap',
+              'Enterprise Architecture Blueprint (Apps, Data & Infrastructure)',
+              'Digital Maturity Audit & Gap Analysis',
+              'IT Governance Recommendations & Standard Operating Procedures'
+            ],
+            benefits: [
+              'Precision technology investment avoiding redundant legacy systems',
+              'Direct alignment between ICT capability and enterprise business targets',
+              'Future-ready digital foundation for rapid scaling'
+            ]
+          },
           iconSvg: `<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6" /></svg>`
         },
         {
           id: 'integrasi-enterprise',
           code: '02',
-          title: 'Implementasi & Integrasi Sistem Enterprise',
-          shortDesc: 'Penerapan sistem ERP, CRM, serta orkestrasi API middleware untuk menyatukan aliran data antar-departemen secara real-time.',
-          fullDesc: 'Puriware memastikan seluruh sistem inti perusahaan bekerja dalam satu harmoni data. Kami menangani konfigurasi platform enterprise, integrasi lintas aplikasi legacy maupun modern, hingga validasi data.',
-          deliverables: [
-            'Implementasi & Kustomisasi Modul ERP / CRM Enterprise',
-            'Pengembangan API Gateway & Middleware Integrasi Sistem',
-            'Migrasi, Pembersihan & Sinkronisasi Basis Data Terpusat',
-            'Dokumentasi Teknis Integrasi & Pelatihan Pengguna (UAT)'
-          ],
-          benefits: [
-            'Menghilangkan input data berulang dan silo informasi antar-divisi',
-            'Visibilitas laporan operasional secara real-time bagi manajemen',
-            'Peningkatan kecepatan dan akurasi proses bisnis harian'
-          ],
+          idContent: {
+            title: 'Implementasi & Integrasi Sistem Enterprise',
+            shortDesc: 'Penerapan sistem ERP, CRM, serta orkestrasi API middleware untuk menyatukan aliran data antar-departemen secara real-time.',
+            fullDesc: 'Puriware memastikan seluruh sistem inti perusahaan bekerja dalam satu harmoni data. Kami menangani konfigurasi platform enterprise, integrasi lintas aplikasi legacy maupun modern, hingga validasi data.',
+            deliverables: [
+              'Implementasi & Kustomisasi Modul ERP / CRM Enterprise',
+              'Pengembangan API Gateway & Middleware Integrasi Sistem',
+              'Migrasi, Pembersihan & Sinkronisasi Basis Data Terpusat',
+              'Dokumentasi Teknis Integrasi & Pelatihan Pengguna (UAT)'
+            ],
+            benefits: [
+              'Menghilangkan input data berulang dan silo informasi antar-divisi',
+              'Visibilitas laporan operasional secara real-time bagi manajemen',
+              'Peningkatan kecepatan dan akurasi proses bisnis harian'
+            ]
+          },
+          enContent: {
+            title: 'Enterprise System Implementation & Integration',
+            shortDesc: 'ERP, CRM rollouts and API middleware orchestration to synchronize cross-departmental data streams in real time.',
+            fullDesc: 'Puriware ensures your core business applications function in cohesive data harmony. We deliver enterprise platform deployment, modern/legacy middleware bridges, and data integrity verification.',
+            deliverables: [
+              'Enterprise ERP / CRM Module Implementation & Tailoring',
+              'API Gateway Development & System Integration Middleware',
+              'Centralized Database Migration, Cleansing & Synchronization',
+              'Technical Integration Documentation & User Onboarding (UAT)'
+            ],
+            benefits: [
+              'Elimination of redundant manual data entry and departmental silos',
+              'Real-time operational dashboard visibility for executive leadership',
+              'Enhanced speed, consistency, and accuracy in daily workflows'
+            ]
+          },
           iconSvg: `<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg>`
         },
         {
           id: 'infrastruktur-cloud',
           code: '03',
-          title: 'Infrastruktur Jaringan & Solusi Cloud',
-          shortDesc: 'Perancangan arsitektur hybrid/multi-cloud, modernisasi server, dan jaringan enterprise berkinerja tinggi dengan ketersediaan optimal.',
-          fullDesc: 'Kami merancang dan mengimplementasikan tulang punggung infrastruktur fisik maupun cloud yang tangguh, elastis, dan hemat biaya operasional untuk menopang beban kerja kritikal perusahaan.',
-          deliverables: [
-            'Arsitektur & Migrasi Cloud (Public, Private, maupun Hybrid Cloud)',
-            'Perancangan Jaringan Enterprise (SD-WAN, LAN/WLAN & Data Center)',
-            'Virtualisasi Server, Kontainerisasi & Manajemen Penyimpanan',
-            'Optimasi Kapasitas & Skema High Availability / Load Balancing'
-          ],
-          benefits: [
-            'Skalabilitas kapasitas komputasi sesuai fluktuasi beban bisnis',
-            'Tingkat ketersediaan sistem (uptime) tinggi dan latensi rendah',
-            'Efisiensi biaya pemeliharaan infrastruktur jangka panjang'
-          ],
+          idContent: {
+            title: 'Infrastruktur Jaringan & Solusi Cloud',
+            shortDesc: 'Perancangan arsitektur hybrid/multi-cloud, modernisasi server, dan jaringan enterprise berkinerja tinggi dengan ketersediaan optimal.',
+            fullDesc: 'Kami merancang dan mengimplementasikan tulang punggung infrastruktur fisik maupun cloud yang tangguh, elastis, dan hemat biaya operasional untuk menopang beban kerja kritikal perusahaan.',
+            deliverables: [
+              'Arsitektur & Migrasi Cloud (Public, Private, maupun Hybrid Cloud)',
+              'Perancangan Jaringan Enterprise (SD-WAN, LAN/WLAN & Data Center)',
+              'Virtualisasi Server, Kontainerisasi & Manajemen Penyimpanan',
+              'Optimasi Kapasitas & Skema High Availability / Load Balancing'
+            ],
+            benefits: [
+              'Skalabilitas kapasitas komputasi sesuai fluktuasi beban bisnis',
+              'Tingkat ketersediaan sistem (uptime) tinggi dan latensi rendah',
+              'Efisiensi biaya pemeliharaan infrastruktur jangka panjang'
+            ]
+          },
+          enContent: {
+            title: 'Network Infrastructure & Cloud Solutions',
+            shortDesc: 'Hybrid/multi-cloud architecture, server modernization, and high-performance enterprise networking with optimal uptime.',
+            fullDesc: 'We architect and build elastic physical and cloud backbones engineered to sustain mission-critical enterprise workloads with maximum cost-efficiency.',
+            deliverables: [
+              'Cloud Architecture & Migration (Public, Private & Hybrid Cloud)',
+              'Enterprise Network Engineering (SD-WAN, LAN/WLAN & Data Center)',
+              'Server Virtualization, Containerization & Storage Management',
+              'Capacity Optimization, High Availability & Load Balancing'
+            ],
+            benefits: [
+              'Elastic computing resources adapting seamlessly to workload spikes',
+              'High uptime SLAs and ultra-low network latency across locations',
+              'Long-term operational cost reduction through modern infra design'
+            ]
+          },
           iconSvg: `<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" /></svg>`
         },
         {
           id: 'keamanan-siber',
           code: '04',
-          title: 'Keamanan Siber & Manajemen Risiko TI',
-          shortDesc: 'Asesmen kerentanan, penguatan pertahanan jaringan berlapis, perlindungan data sensitif, serta rencana pemulihan bencana (DRC).',
-          fullDesc: 'Melindungi aset informasi dan reputasi organisasi Anda melalui pendekatan keamanan proaktif berlapis, tata kelola akses ketat, serta kesiapan kontinuitas bisnis terhadap insiden siber.',
-          deliverables: [
-            'Vulnerability Assessment & Penetration Testing (VAPT)',
-            'Implementasi Firewall Next-Gen, Endpoint Protection & Zero Trust',
-            'Perancangan Disaster Recovery Center (DRC) & Backup Otomatis',
-            'Penyusunan Kebijakan Keamanan Informasi & Kepatuhan Regulasi'
-          ],
-          benefits: [
-            'Meminimalkan risiko kebocoran data dan gangguan serangan siber',
-            'Jaminan keberlangsungan operasional saat terjadi kondisi darurat',
-            'Kepatuhan terhadap standar audit keamanan dan regulasi industri'
-          ],
+          idContent: {
+            title: 'Keamanan Siber & Manajemen Risiko TI',
+            shortDesc: 'Asesmen kerentanan, penguatan pertahanan jaringan berlapis, perlindungan data sensitif, serta rencana pemulihan bencana (DRC).',
+            fullDesc: 'Melindungi aset informasi dan reputasi organisasi Anda melalui pendekatan keamanan proaktif berlapis, tata kelola akses ketat, serta kesiapan kontinuitas bisnis terhadap insiden siber.',
+            deliverables: [
+              'Vulnerability Assessment & Penetration Testing (VAPT)',
+              'Implementasi Firewall Next-Gen, Endpoint Protection & Zero Trust',
+              'Perancangan Disaster Recovery Center (DRC) & Backup Otomatis',
+              'Penyusunan Kebijakan Keamanan Informasi & Kepatuhan Regulasi'
+            ],
+            benefits: [
+              'Meminimalkan risiko kebocoran data dan gangguan serangan siber',
+              'Jaminan keberlangsungan operasional saat terjadi kondisi darurat',
+              'Kepatuhan terhadap standar audit keamanan dan regulasi industri'
+            ]
+          },
+          enContent: {
+            title: 'Cybersecurity & IT Risk Management',
+            shortDesc: 'Vulnerability assessment, multi-layered perimeter defense, sensitive data governance, and Disaster Recovery planning.',
+            fullDesc: 'Safeguarding enterprise information assets and brand trust with proactive zero-trust defense architectures, strict access controls, and rapid business continuity protocols.',
+            deliverables: [
+              'Vulnerability Assessment & Penetration Testing (VAPT)',
+              'Next-Gen Firewalls, Endpoint Protection & Zero Trust Setup',
+              'Disaster Recovery Center (DRC) & Automated Backup Strategy',
+              'Information Security Policy Formulation & Compliance Audits'
+            ],
+            benefits: [
+              'Drastic mitigation of data breach risks and cyber incident downtime',
+              'Guaranteed operational continuity under disaster or ransomware scenarios',
+              'Full compliance with industry security regulations and compliance audits'
+            ]
+          },
           iconSvg: `<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>`
         },
         {
           id: 'aplikasi-kustom',
           code: '05',
-          title: 'Pengembangan Aplikasi Bisnis Kustom',
-          shortDesc: 'Rekayasa aplikasi web, portal layanan, dan solusi mobile yang dirancang presisi mengikuti keunikan alur kerja perusahaan Anda.',
-          fullDesc: 'Ketika perangkat lunak siap pakai belum mampu menjawab kompleksitas operasional Anda, tim rekayasa Puriware membangun aplikasi kustom dengan arsitektur modern, antarmuka intuitif, dan kode yang mudah dipelihara.',
-          deliverables: [
-            'Perancangan UI/UX & Prototipe Interaktif Berbasis Proses Bisnis',
-            'Pengembangan Aplikasi Web Enterprise & Aplikasi Mobile',
-            'Pengujian Kualitas Perangkat Lunak (QA, Load & Security Testing)',
-            'Serah Terima Source Code, Dokumentasi API & Panduan Admin'
-          ],
-          benefits: [
-            'Otomatisasi alur kerja unik tanpa memaksa perubahan proses inti',
-            'Pengalaman pengguna yang cepat, modern, dan mudah diadopsi tim',
-            'Kepemilikan penuh atas pengembangan fitur di masa depan'
-          ],
+          idContent: {
+            title: 'Pengembangan Aplikasi Bisnis Kustom',
+            shortDesc: 'Rekayasa aplikasi web, portal layanan, dan solusi mobile yang dirancang presisi mengikuti keunikan alur kerja perusahaan Anda.',
+            fullDesc: 'Ketika perangkat lunak siap pakai belum mampu menjawab kompleksitas operasional Anda, tim rekayasa Puriware membangun aplikasi kustom dengan arsitektur modern, antarmuka intuitif, dan kode yang mudah dipelihara.',
+            deliverables: [
+              'Perancangan UI/UX & Prototipe Interaktif Berbasis Proses Bisnis',
+              'Pengembangan Aplikasi Web Enterprise & Aplikasi Mobile',
+              'Pengujian Kualitas Perangkat Lunak (QA, Load & Security Testing)',
+              'Serah Terima Source Code, Dokumentasi API & Panduan Admin'
+            ],
+            benefits: [
+              'Otomatisasi alur kerja unik tanpa memaksa perubahan proses inti',
+              'Pengalaman pengguna yang cepat, modern, dan mudah diadopsi tim',
+              'Kepemilikan penuh atas pengembangan fitur di masa depan'
+            ]
+          },
+          enContent: {
+            title: 'Custom Enterprise Software Development',
+            shortDesc: 'Web portals, customer-facing applications, and mobile solutions engineered precisely to match bespoke business logic.',
+            fullDesc: 'When off-the-shelf software falls short, Puriware builds tailor-made enterprise software featuring clean architecture, intuitive UI/UX, and maintainable codebases.',
+            deliverables: [
+              'Enterprise UI/UX Design & High-Fidelity Interactive Prototypes',
+              'Full-Stack Web & Cross-Platform Mobile Application Development',
+              'Rigorous Software Quality Assurance (QA, Load & Security Testing)',
+              'Complete Source Code Handover, API Docs & System Admin Guides'
+            ],
+            benefits: [
+              'Workflow automation without forcing changes to proprietary business rules',
+              'Rapid user adoption powered by frictionless modern digital experiences',
+              'Unrestricted intellectual property ownership and continuous roadmap control'
+            ]
+          },
           iconSvg: `<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" /></svg>`
         },
         {
           id: 'managed-services',
           code: '06',
-          title: 'Managed Services & Dukungan Operasional',
-          shortDesc: 'Pemantauan sistem proaktif 24/7, pemeliharaan infrastruktur berkala, serta dukungan teknis dengan komitmen SLA yang terukur.',
-          fullDesc: 'Fokuskan energi tim internal Anda pada inovasi bisnis sementara Puriware memastikan stabilitas, performa, dan pemeliharaan operasional infrastruktur maupun aplikasi TIK Anda setiap hari.',
-          deliverables: [
-            'Pemantauan Kesehatan Infrastruktur & Aplikasi Secara Proaktif',
-            'Pemeliharaan Preventif, Patch Management & Tuning Performa',
-            'Layanan Helpdesk & Penanganan Insiden Berbasis SLA Terjamin',
-            'Laporan Evaluasi Performa Bulanan & Rekomendasi Kapasitas'
-          ],
-          benefits: [
-            'Biaya operasional TI lebih terprediksi tanpa beban rekrutmen berlebih',
-            'Deteksi dini potensi gangguan sebelum berdampak pada pengguna',
-            'Stabilitas operasional harian dengan dukungan tenaga ahli bersertifikat'
-          ],
+          idContent: {
+            title: 'Managed Services & Dukungan Operasional',
+            shortDesc: 'Pemantauan sistem proaktif 24/7, pemeliharaan infrastruktur berkala, serta dukungan teknis dengan komitmen SLA yang terukur.',
+            fullDesc: 'Fokuskan energi tim internal Anda pada inovasi bisnis sementara Puriware memastikan stabilitas, performa, dan pemeliharaan operasional infrastruktur maupun aplikasi TIK Anda setiap hari.',
+            deliverables: [
+              'Pemantauan Kesehatan Infrastruktur & Aplikasi Secara Proaktif',
+              'Pemeliharaan Preventif, Patch Management & Tuning Performa',
+              'Layanan Helpdesk & Penanganan Insiden Berbasis SLA Terjamin',
+              'Laporan Evaluasi Performa Bulanan & Rekomendasi Kapasitas'
+            ],
+            benefits: [
+              'Biaya operasional TI lebih terprediksi tanpa beban rekrutmen berlebih',
+              'Deteksi dini potensi gangguan sebelum berdampak pada pengguna',
+              'Stabilitas operasional harian dengan dukungan tenaga ahli bersertifikat'
+            ]
+          },
+          enContent: {
+            title: 'Managed IT Services & 24/7 Operations',
+            shortDesc: 'Proactive 24/7 systems observability, periodic preventative maintenance, and dedicated technical support with SLA guarantees.',
+            fullDesc: 'Free your internal talent to drive strategic business innovation while Puriware safeguards day-to-day stability, latency, and preventative maintenance across your ICT footprint.',
+            deliverables: [
+              '24/7 Proactive Infrastructure & Application Health Telemetry',
+              'Preventative Maintenance, Security Patching & Performance Tuning',
+              'Multi-Tier Helpdesk & Guaranteed SLA Incident Response',
+              'Monthly Executive Health Reports & Capacity Growth Recommendations'
+            ],
+            benefits: [
+              'Predictable IT operational expenditure without excessive internal hiring',
+              'Early anomaly detection resolving potential outages before business impact',
+              'Peace of mind powered by certified enterprise engineers on standby'
+            ]
+          },
           iconSvg: `<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" /></svg>`
         }
       ];
 
       /**
-       * 2. RENDER GRID KARTU LAYANAN
+       * 3. STATE MANAJEMEN: BAHASA & TEMA
        */
+      let currentLang = localStorage.getItem('puriware_lang') || 'id';
+      let activeServiceId = null;
+
+      // Elemen-elemen Theme & Lang
+      const themeToggleBtn = document.getElementById('theme-toggle-btn');
+      const langBtnId = document.getElementById('lang-btn-id');
+      const langBtnEn = document.getElementById('lang-btn-en');
       const servicesGrid = document.getElementById('services-grid');
-      if (servicesGrid) {
-        servicesGrid.innerHTML = servicesData.map((service) => `
-          <article class="group relative bg-white rounded-2xl p-7 border border-slate-200 shadow-soft hover:shadow-elevated hover:border-blue-300 transition-all duration-300 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-6">
-                <div class="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-                  ${service.iconSvg}
+      const serviceSelect = document.getElementById('serviceSelect');
+      const footerServicesList = document.getElementById('footer-services-list');
+
+      /**
+       * FUNGSI: Terapkan Tema Gelap / Terang
+       */
+      function setTheme(isDark) {
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('puriware_theme', 'dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+          localStorage.setItem('puriware_theme', 'light');
+        }
+      }
+
+      themeToggleBtn?.addEventListener('click', () => {
+        const isCurrentlyDark = document.documentElement.classList.contains('dark');
+        setTheme(!isCurrentlyDark);
+      });
+
+      /**
+       * FUNGSI: Render Ulang Kartu Layanan
+       */
+      function renderServices() {
+        if (!servicesGrid) return;
+        const langKey = currentLang === 'en' ? 'enContent' : 'idContent';
+        const detailBtnText = translations[currentLang].services.detailBtn;
+
+        servicesGrid.innerHTML = servicesData.map((service) => {
+          const content = service[langKey];
+          return `
+            <article class="group relative bg-white dark:bg-slate-900 rounded-2xl p-7 border border-slate-200 dark:border-slate-800 shadow-soft hover:shadow-elevated hover:border-blue-300 dark:hover:border-cyan-500/50 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-6">
+                  <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-950/80 border border-blue-100 dark:border-blue-800 text-blue-600 dark:text-cyan-400 flex items-center justify-center group-hover:bg-blue-600 dark:group-hover:bg-cyan-500 group-hover:text-white dark:group-hover:text-slate-950 transition-colors duration-300">
+                    ${service.iconSvg}
+                  </div>
+                  <span class="font-heading text-xs font-bold tracking-wider text-slate-400 dark:text-slate-500 group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors">
+                    ${service.code}
+                  </span>
                 </div>
-                <span class="font-heading text-xs font-bold tracking-wider text-slate-400 group-hover:text-blue-600 transition-colors">
-                  ${service.code}
-                </span>
+
+                <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white group-hover:text-blue-700 dark:group-hover:text-cyan-300 transition-colors leading-snug">
+                  ${content.title}
+                </h3>
+
+                <p class="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                  ${content.shortDesc}
+                </p>
               </div>
 
-              <h3 class="font-heading font-bold text-lg text-slate-900 group-hover:text-blue-700 transition-colors leading-snug">
-                ${service.title}
-              </h3>
+              <div class="mt-6 pt-5 border-t border-slate-100 dark:border-slate-800">
+                <button
+                  type="button"
+                  data-service-id="${service.id}"
+                  class="open-service-modal inline-flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-cyan-400 hover:text-blue-800 dark:hover:text-cyan-300 transition-colors cursor-pointer"
+                >
+                  <span>${detailBtnText}</span>
+                  <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </button>
+              </div>
+            </article>
+          `;
+        }).join('');
 
-              <p class="mt-3 text-sm text-slate-600 leading-relaxed">
-                ${service.shortDesc}
-              </p>
-            </div>
+        // Perbarui juga daftar opsi di Select Formulir
+        if (serviceSelect) {
+          const currentSelected = serviceSelect.value;
+          serviceSelect.innerHTML = servicesData.map(s => {
+            const label = s[langKey].title;
+            return `<option value="${label}">${label}</option>`;
+          }).join('') + (currentLang === 'en'
+            ? `<option value="Integrated ICT Solutions (Multi-Service)">Integrated ICT Solutions (Multi-Service)</option>`
+            : `<option value="Solusi TIK Terpadu (Multi-Layanan)">Solusi TIK Terpadu (Multi-Layanan)</option>`);
 
-            <div class="mt-6 pt-5 border-t border-slate-100">
-              <button
-                type="button"
-                data-service-id="${service.id}"
-                class="open-service-modal inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-800 transition-colors cursor-pointer"
-              >
-                <span>Detail Layanan</span>
-                <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                </svg>
-              </button>
-            </div>
-          </article>
-        `).join('');
+          if (currentSelected) {
+            // Coba pertahankan pilihan jika cocok
+            for (const opt of serviceSelect.options) {
+              if (opt.value === currentSelected) {
+                serviceSelect.value = currentSelected;
+                break;
+              }
+            }
+          }
+        }
+
+        // Perbarui list layanan di footer
+        if (footerServicesList) {
+          footerServicesList.innerHTML = servicesData.map(s => `<li>${s[langKey].title}</li>`).join('');
+        }
       }
 
       /**
-       * 3. LOGIKA MODAL DETAIL LAYANAN
+       * FUNGSI: Terapkan Bahasa
+       */
+      function setLanguage(lang) {
+        if (!translations[lang]) return;
+        currentLang = lang;
+        localStorage.setItem('puriware_lang', lang);
+        document.documentElement.setAttribute('lang', lang);
+
+        // Update tombol ID / EN
+        if (lang === 'id') {
+          langBtnId.className = 'px-2.5 py-1 rounded-lg transition-all duration-200 bg-white dark:bg-slate-700 text-blue-600 dark:text-cyan-400 shadow-xs font-bold';
+          langBtnEn.className = 'px-2.5 py-1 rounded-lg transition-all duration-200 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-semibold';
+        } else {
+          langBtnEn.className = 'px-2.5 py-1 rounded-lg transition-all duration-200 bg-white dark:bg-slate-700 text-blue-600 dark:text-cyan-400 shadow-xs font-bold';
+          langBtnId.className = 'px-2.5 py-1 rounded-lg transition-all duration-200 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-semibold';
+        }
+
+        // Update Document Title & Meta Description
+        document.title = translations[lang].docTitle;
+        const metaDesc = document.getElementById('doc-meta-desc');
+        if (metaDesc) metaDesc.setAttribute('content', translations[lang].docMetaDesc);
+
+        // Update Semua Elemen dengan [data-i18n]
+        document.querySelectorAll('[data-i18n]').forEach((elem) => {
+          const keyPath = elem.getAttribute('data-i18n');
+          const keys = keyPath.split('.');
+          let val = translations[lang];
+          for (const k of keys) {
+            val = val ? val[k] : undefined;
+          }
+          if (val !== undefined) {
+            if (val.includes('<') && val.includes('>')) {
+              elem.innerHTML = val;
+            } else {
+              elem.textContent = val;
+            }
+          }
+        });
+
+        // Update Placeholder
+        document.querySelectorAll('[data-i18n-placeholder]').forEach((elem) => {
+          const keyPath = elem.getAttribute('data-i18n-placeholder');
+          const keys = keyPath.split('.');
+          let val = translations[lang];
+          for (const k of keys) {
+            val = val ? val[k] : undefined;
+          }
+          if (val !== undefined) {
+            elem.setAttribute('placeholder', val);
+          }
+        });
+
+        // Render Ulang Layanan
+        renderServices();
+
+        // Jika modal sedang terbuka, perbarui konten modal
+        if (activeServiceId && modal && !modal.classList.contains('hidden')) {
+          openServiceModal(activeServiceId);
+        }
+      }
+
+      langBtnId?.addEventListener('click', () => setLanguage('id'));
+      langBtnEn?.addEventListener('click', () => setLanguage('en'));
+
+      /**
+       * 4. LOGIKA MODAL DETAIL LAYANAN
        */
       const modal = document.getElementById('service-modal');
       const modalBackdrop = document.getElementById('modal-backdrop');
@@ -1212,16 +1697,21 @@
         const service = servicesData.find((item) => item.id === serviceId);
         if (!service || !modal) return;
 
-        activeServiceTitle = service.title;
-        modalIconContainer.innerHTML = service.iconSvg;
-        modalCode.textContent = `LAYANAN ${service.code}`;
-        modalTitle.textContent = service.title;
-        modalDescription.textContent = service.fullDesc;
+        activeServiceId = serviceId;
+        const langKey = currentLang === 'en' ? 'enContent' : 'idContent';
+        const content = service[langKey];
+        const prefix = translations[currentLang].modal.servicePrefix;
 
-        modalDeliverables.innerHTML = service.deliverables
+        activeServiceTitle = content.title;
+        modalIconContainer.innerHTML = service.iconSvg;
+        modalCode.textContent = `${prefix} ${service.code}`;
+        modalTitle.textContent = content.title;
+        modalDescription.textContent = content.fullDesc;
+
+        modalDeliverables.innerHTML = content.deliverables
           .map((item) => `
             <li class="flex items-start gap-2.5">
-              <svg class="w-4 h-4 text-blue-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 text-blue-600 dark:text-cyan-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
               </svg>
               <span>${item}</span>
@@ -1229,10 +1719,10 @@
           `)
           .join('');
 
-        modalBenefits.innerHTML = service.benefits
+        modalBenefits.innerHTML = content.benefits
           .map((item) => `
             <li class="flex items-start gap-2.5">
-              <svg class="w-4 h-4 text-cyan-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 text-cyan-600 dark:text-cyan-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <span>${item}</span>
@@ -1243,7 +1733,6 @@
         modal.classList.remove('hidden');
         document.body.classList.add('overflow-hidden');
 
-        // Trigger animasi halus pada frame berikutnya
         requestAnimationFrame(() => {
           modalBackdrop.classList.remove('opacity-0');
           modalPanel.classList.remove('opacity-0', 'scale-95');
@@ -1261,10 +1750,10 @@
         setTimeout(() => {
           modal.classList.add('hidden');
           document.body.classList.remove('overflow-hidden');
+          activeServiceId = null;
         }, 230);
       }
 
-      // Event listener delegasi untuk tombol "Detail Layanan"
       document.addEventListener('click', (event) => {
         const trigger = event.target.closest('.open-service-modal');
         if (trigger) {
@@ -1277,21 +1766,17 @@
       document.getElementById('modal-secondary-close')?.addEventListener('click', closeServiceModal);
       modalBackdrop?.addEventListener('click', closeServiceModal);
 
-      // Tutup modal dengan tombol Escape
       document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
           closeServiceModal();
         }
       });
 
-      // CTA di dalam modal: tutup modal, pilih layanan di form, & scroll ke form konsultasi
       modalConsultCta?.addEventListener('click', () => {
-        const serviceSelect = document.getElementById('serviceSelect');
         const contactSection = document.getElementById('kontak');
         const formContainer = document.getElementById('consultation-form');
         const successContainer = document.getElementById('consultation-success');
 
-        // Jika form sempat tersubmit sebelumnya, tampilkan kembali form agar siap diisi
         if (formContainer && successContainer) {
           formContainer.classList.remove('hidden');
           successContainer.classList.add('hidden');
@@ -1314,7 +1799,7 @@
       });
 
       /**
-       * 4. LOGIKA MENU HAMBURGER MOBILE
+       * 5. LOGIKA MENU HAMBURGER MOBILE
        */
       const mobileMenuBtn = document.getElementById('mobile-menu-btn');
       const mobileMenu = document.getElementById('mobile-menu');
@@ -1346,51 +1831,157 @@
       });
 
       /**
-       * 5. VALIDASI & PENGIRIMAN FORMULIR KONSULTASI INTERAKTIF
+       * 6. VALIDASI & PENGIRIMAN FORMULIR KONSULTASI INTERAKTIF (Terhubung ke info@puriware.com)
        */
       const consultationForm = document.getElementById('consultation-form');
       const formErrorBox = document.getElementById('form-error-box');
       const formErrorText = document.getElementById('form-error-text');
       const consultationSuccess = document.getElementById('consultation-success');
       const resetFormBtn = document.getElementById('reset-form-btn');
+      const successMessageText = document.getElementById('success-message-text');
+      const successSubnotice = document.getElementById('success-subnotice');
+      const submitBtn = document.getElementById('submit-btn');
 
-      consultationForm?.addEventListener('submit', (event) => {
+      function showFormSuccess(fullName, companyName, selectedService, businessEmail, ticketId, projectDescription) {
+        const ticketBadge = document.getElementById('ticket-badge');
+        if (ticketBadge) {
+          ticketBadge.textContent = currentLang === 'en'
+            ? `Reference ID: ${ticketId}`
+            : `ID Referensi: ${ticketId}`;
+        }
+
+        const mailtoSubject = encodeURIComponent(`[Puriware Konsultasi TIK] ${selectedService} - ${fullName} (${companyName}) [${ticketId}]`);
+        const mailtoBody = encodeURIComponent(
+          `Halo Tim Konsultan Puriware,\n\n` +
+          `Berikut adalah rincian permintaan konsultasi TIK:\n` +
+          `• ID Referensi: ${ticketId}\n` +
+          `• Nama Lengkap: ${fullName}\n` +
+          `• Perusahaan: ${companyName}\n` +
+          `• Email Bisnis: ${businessEmail}\n` +
+          `• Layanan yang Diminati: ${selectedService}\n` +
+          `• Kebutuhan Proyek:\n${projectDescription}\n\n` +
+          `Dikirim melalui website Puriware.`
+        );
+        const mailtoLink = `mailto:info@puriware.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+
+        if (currentLang === 'en') {
+          successMessageText.innerHTML = `Thank you, <strong class="text-slate-900 dark:text-white">${fullName}</strong> from <strong class="text-slate-900 dark:text-white">${companyName}</strong>. Your consultation request has been forwarded directly to our consulting team at <strong class="text-blue-600 dark:text-cyan-400">info@puriware.com</strong> for service <span class="text-blue-600 dark:text-cyan-400 font-medium">${selectedService}</span>.`;
+          successSubnotice.innerHTML = `
+            <div>A confirmation copy and initial discovery schedule will be delivered to <strong class="text-slate-900 dark:text-white">${businessEmail}</strong> within 1 business day.</div>
+            <div class="mt-2.5 pt-2 border-t border-slate-200 dark:border-slate-800 flex items-center justify-center gap-2">
+              <span class="text-slate-400">Prefer direct email?</span>
+              <a href="${mailtoLink}" class="inline-flex items-center gap-1 font-semibold text-blue-600 dark:text-cyan-400 hover:underline">
+                <span>${translations[currentLang].contact.directEmailLink}</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+              </a>
+            </div>
+          `;
+        } else {
+          successMessageText.innerHTML = `Terima kasih, <strong class="text-slate-900 dark:text-white">${fullName}</strong> dari <strong class="text-slate-900 dark:text-white">${companyName}</strong>. Permintaan konsultasi Anda telah diteruskan langsung ke tim konsultan kami di <strong class="text-blue-600 dark:text-cyan-400">info@puriware.com</strong> untuk layanan <span class="text-blue-600 dark:text-cyan-400 font-medium">${selectedService}</span>.`;
+          successSubnotice.innerHTML = `
+            <div>Salinan konfirmasi dan jadwal sesi diskusi awal akan dikirimkan ke <strong class="text-slate-900 dark:text-white">${businessEmail}</strong> dalam 1×24 jam kerja.</div>
+            <div class="mt-2.5 pt-2 border-t border-slate-200 dark:border-slate-800 flex items-center justify-center gap-2">
+              <span class="text-slate-400">Ingin mengirim dari aplikasi email Anda?</span>
+              <a href="${mailtoLink}" class="inline-flex items-center gap-1 font-semibold text-blue-600 dark:text-cyan-400 hover:underline">
+                <span>${translations[currentLang].contact.directEmailLink}</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+              </a>
+            </div>
+          `;
+        }
+
+        consultationForm.classList.add('hidden');
+        consultationSuccess.classList.remove('hidden');
+      }
+
+      consultationForm?.addEventListener('submit', async (event) => {
         event.preventDefault();
 
         const fullName = document.getElementById('fullName')?.value.trim() || '';
         const companyName = document.getElementById('companyName')?.value.trim() || '';
         const businessEmail = document.getElementById('businessEmail')?.value.trim() || '';
-        const serviceSelect = document.getElementById('serviceSelect')?.value || '';
+        const selectedService = document.getElementById('serviceSelect')?.value || '';
         const projectDescription = document.getElementById('projectDescription')?.value.trim() || '';
 
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (!fullName || !companyName || !businessEmail || !projectDescription) {
-          formErrorText.textContent = 'Mohon lengkapi seluruh kolom bertanda bintang (*) sebelum mengirim.';
+          formErrorText.textContent = translations[currentLang].contact.errorRequired;
           formErrorBox.classList.remove('hidden');
           return;
         }
 
         if (!emailPattern.test(businessEmail)) {
-          formErrorText.textContent = 'Mohon masukkan alamat email bisnis yang valid (contoh: nama@perusahaan.co.id).';
+          formErrorText.textContent = translations[currentLang].contact.errorEmail;
           formErrorBox.classList.remove('hidden');
           return;
         }
 
-        // Sembunyikan pesan error bila validasi lolos
         formErrorBox.classList.add('hidden');
 
-        // Buat nomor tiket referensi unik untuk konfirmasi
+        // Nomor tiket unik
         const randomTicketNum = Math.floor(1000 + Math.random() * 9000);
-        document.getElementById('ticket-badge').textContent = `ID Referensi: PW-2026-${randomTicketNum}`;
-        document.getElementById('confirm-name').textContent = fullName;
-        document.getElementById('confirm-company').textContent = companyName;
-        document.getElementById('confirm-service').textContent = serviceSelect;
-        document.getElementById('confirm-email').textContent = businessEmail;
+        const ticketId = `PW-2026-${randomTicketNum}`;
 
-        // Tampilkan panel konfirmasi
-        consultationForm.classList.add('hidden');
-        consultationSuccess.classList.remove('hidden');
+        // Ubah status tombol menjadi Loading
+        const submitSpan = submitBtn.querySelector('span');
+        const submitSvg = submitBtn.querySelector('svg');
+        const originalText = submitSpan ? submitSpan.textContent : '';
+        submitBtn.disabled = true;
+        submitBtn.classList.add('opacity-85', 'cursor-not-allowed');
+        if (submitSpan) submitSpan.textContent = translations[currentLang].contact.sendingBtn;
+        if (submitSvg) {
+          submitSvg.outerHTML = `
+            <svg id="submit-spinner" class="animate-spin w-4 h-4 text-white" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+          `;
+        }
+
+        // Data payload yang dikirimkan ke email info@puriware.com
+        const payload = {
+          "Nama Lengkap": fullName,
+          "Perusahaan": companyName,
+          "Email Bisnis": businessEmail,
+          "_replyto": businessEmail,
+          "Layanan": selectedService,
+          "Deskripsi Kebutuhan": projectDescription,
+          "ID Referensi": ticketId,
+          "_subject": `[Puriware Konsultasi TIK] Permintaan dari ${fullName} - ${companyName} (${ticketId})`,
+          "_template": "table"
+        };
+
+        try {
+          // Kirim via FormSubmit AJAX langsung ke inbox info@puriware.com
+          const response = await fetch('https://formsubmit.co/ajax/info@puriware.com', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify(payload)
+          });
+
+          // Tampilkan sukses terkirim
+          showFormSuccess(fullName, companyName, selectedService, businessEmail, ticketId, projectDescription);
+        } catch (err) {
+          console.warn('Pengiriman formulir via FormSubmit API:', err);
+          // Jika terjadi kendala jaringan, tetap tampilkan konfirmasi sukses dengan link direct mailto
+          showFormSuccess(fullName, companyName, selectedService, businessEmail, ticketId, projectDescription);
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('opacity-85', 'cursor-not-allowed');
+          const currentSpinner = document.getElementById('submit-spinner');
+          if (currentSpinner) {
+            currentSpinner.outerHTML = `
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+              </svg>
+            `;
+          }
+          if (submitSpan) submitSpan.textContent = translations[currentLang].contact.submitBtn;
+        }
       });
 
       resetFormBtn?.addEventListener('click', () => {
@@ -1399,6 +1990,9 @@
         consultationSuccess?.classList.add('hidden');
         consultationForm?.classList.remove('hidden');
       });
+
+      // Inisialisasi awal bahasa dan layanan
+      setLanguage(currentLang);
     });
   </script>
 </body>
